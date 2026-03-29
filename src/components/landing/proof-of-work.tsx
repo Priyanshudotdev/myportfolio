@@ -55,7 +55,7 @@ const projects: ProjectItem[] = [
     tags: ["Web", "Real-time", "Full Stack", "Developer Tools"],
   },
   {
-    id: "maadhyam-publfdfsfdication",
+    id: "maadhyam",
     name: "Maadhyam",
     url: "", // replace with actual link from resume
     description:
@@ -66,7 +66,7 @@ const projects: ProjectItem[] = [
     tags: ["Web", "Frontend", "Publication"],
   },
   {
-    id: "maadhyam-publication",
+    id: "maadhyam2",
     name: "Maadhyam",
     url: "", // replace with actual link from resume
     description:

@@ -28,11 +28,11 @@ const experiences: ExperienceItem[] = [
     description:
       "Developed and deployed cutting-edge solutions, including multi-select preferences, browser-based video recording, and API integrations like WhatsApp/email reminders. Optimized workflows with autosave features and real-time scraping, leveraging Next.js, Supabase, and Cloudflare workers.",
     achievements: [
-      "Implemented a reminder system using Redis Sorted Sets and a custom daemon to handle time-based task execution under 24-hour constraints.",
-      "Integrated multiple APIs including Swiggy for food delivery and dine-out services, and Blinkit for grocery delivery, while retaining Google for general recommendations and providing user choice flexibility.",
-      "Designed and implemented support for WhatsApp Business API commands (/help, /reset, /new), including runtime-configurable bot initialization based on environment variables.",
-      "Added Azure Blob Storage integration for file handling and message reaction management in WhatsApp bot.",
-      "Ensured WhatsApp message compliance by chunking outputs exceeding 4096 characters.",
+      "Built and delivered a secure user authentication system (Sign-up/Login).",
+      "Implemented scalable global state management for consistent data flow across the application.",
+      "Build the Student Dashboard from scratch, enabling users to create subjects and track goals through dynamic UI forms and API integrations.",
+      "Contributed to onboarding flow optimization and improved overall user experience.",
+      "Assisted in DevOps automation for smoother deployment and development workflows.",
     ],
     href: "https://vectorlab.in/",
     logoUrl: "https://vectorlab.in/favicon.ico",

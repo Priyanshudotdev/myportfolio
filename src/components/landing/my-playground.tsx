@@ -171,7 +171,7 @@ const MyPlayground = () => {
             ref={canvasRef}
             width={CANVAS_SIZE}
             height={CANVAS_SIZE}
-            className="cursor-crosshair rounded touch-none"
+            className="cursor-crosshair rounded touch-none w-full h-auto"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}

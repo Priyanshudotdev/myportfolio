@@ -1,10 +1,8 @@
-"use client";
-
+import { cn } from "@/lib/utils";
 import { File } from "lucide-react";
 import Image from "next/image";
 import { BsGithub, BsLinkedin, BsPinterest, BsTwitter } from "react-icons/bs";
 import { GoMail } from "react-icons/go";
-import { cn } from "@/lib/utils";
 import Container from "../common/container";
 import Divider from "../common/divider";
 import { ModeToggle } from "../theme-toggle";
@@ -15,6 +13,7 @@ import {
   TooltipTrigger,
 } from "../ui/tooltip";
 import Banner from "./banner";
+import YouTubeMusicCard from "../ui/youtube-music-card";
 
 const socialLinks = [
   {
@@ -49,7 +48,7 @@ const ProfileHeader = () => {
   return (
     <Container className="pb-8 relative w-full">
       <Banner
-        text="Working... :D"
+        text="Love the beauty of failing."
         url="https://i.pinimg.com/1200x/70/45/a5/7045a5d2381cc470ced04eb6a6db075d.jpg"
       />
 
@@ -57,6 +56,7 @@ const ProfileHeader = () => {
       <div className="py-4 px-6 sm:px-8">
         <div className="relative -mt-14 mb-3 w-fit">
           <Image
+            // src="https://i.pinimg.com/736x/8a/27/6c/8a276c8e59a21fc66f433ee19c167b0b.jpg"
             src="https://i.pinimg.com/1200x/30/56/46/305646250f1a6dd7411a0f72aa61e2ae.jpg"
             alt="profile"
             width={112}
@@ -77,13 +77,14 @@ const ProfileHeader = () => {
           </div>
 
           <div className="flex gap-x-2 text-sm items-center">
+
             <div className="sm:hidden flex gap-x-2">
               {socialLinks.map(({ icon: Icon, label, href }) => (
                 <button
                   key={label}
                   type="button"
                   className={cn(
-                    "group relative overflow-hidden rounded-full text-sm font-medium transition-all duration-300",
+                    "group relative cursor-pointer overflow-hidden rounded-full text-sm font-medium transition-all duration-300",
                     "bg-background border border-border hover:border-foreground/20",
                     "shadow-[0_1px_0_0_rgba(0,0,0,0.02)_inset,0_-1px_0_0_rgba(0,0,0,0.02)_inset]",
                     "dark:shadow-[0_1px_0_0_rgba(255,255,255,0.02)_inset,0_-1px_0_0_rgba(255,255,255,0.02)_inset]",
@@ -101,14 +102,14 @@ const ProfileHeader = () => {
             </div>
 
             {/* Desktop: Buttons with tooltip */}
-            <div className="hidden sm:block">
+            <div className="hidden sm:flex gap-x-2">
               <TooltipProvider>
                 {socialLinks.map(({ icon: Icon, label, href }) => (
                   <Tooltip key={label}>
                     <TooltipTrigger
                       type="button"
                       className={cn(
-                        "group relative overflow-hidden rounded-full text-sm font-medium transition-all duration-300",
+                        "group relative cursor-pointer overflow-hidden rounded-full text-sm font-medium transition-all duration-300",
                         "bg-background border border-border hover:border-foreground/20",
                         "shadow-[0_1px_0_0_rgba(0,0,0,0.02)_inset,0_-1px_0_0_rgba(0,0,0,0.02)_inset]",
                         "dark:shadow-[0_1px_0_0_rgba(255,255,255,0.02)_inset,0_-1px_0_0_rgba(255,255,255,0.02)_inset]",
@@ -134,6 +135,10 @@ const ProfileHeader = () => {
           </div>
         </div>
       </div>
+
+               {/* <div className="px-4 py-6">
+          <YouTubeMusicCard />
+        </div> */}
 
       <Divider />
 

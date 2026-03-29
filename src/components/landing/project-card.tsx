@@ -1,11 +1,13 @@
-import { ChevronRight, Link } from "lucide-react";
-import Image from "next/image";
-import { BsGithub } from "react-icons/bs";
 import { cn } from "@/lib/utils";
+import { ChevronRight } from "lucide-react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import React from "react";
 import GradientButton from "../ui/gradient-button";
 import type { ProjectItem } from "./proof-of-work";
 
 const ProjectCard = ({ projects }: { projects: ProjectItem[] }) => {
+  const router = useRouter();
   const displayedProjects =
     projects.length >= 4 ? projects.slice(0, 4) : projects;
 
@@ -15,8 +17,9 @@ const ProjectCard = ({ projects }: { projects: ProjectItem[] }) => {
         {displayedProjects.map((project) => (
           <div
             key={project.id}
+            onClick={() => router.push(`/project/${project.id}`)}
             className={cn(
-              "rounded-lg flex flex-col cursor-pointer hover:scale-[1.02] transition ease-in text-left bg-muted p-1.5 border border-muted w-full sm:w-80 h-80",
+              "rounded-lg flex flex-col cursor-pointer hover:scale-[1.01] transition ease-in text-left bg-muted p-1.5 border border-muted w-full sm:w-80 h-80",
               "transition ease-in hover:opacity-100 opacity-75",
             )}
           >
@@ -34,20 +37,44 @@ const ProjectCard = ({ projects }: { projects: ProjectItem[] }) => {
                 {project.name}
               </h3>
               <div className="text-center flex mx-2 items-center justify-center">
-                <GradientButton
-                  onClick={() =>
-                    window.open(project.githubUrl || "#", "_blank")
-                  }
-                  className="text-xs cursor-pointer"
+                <div
+                  onClick={(e: React.MouseEvent) => {
+                    e.stopPropagation();
+                    window.open(project.githubUrl || "#", "_blank");
+                  }}
+                  className="cursor-pointer"
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e: React.KeyboardEvent) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.stopPropagation();
+                      window.open(project.githubUrl || "#", "_blank");
+                    }
+                  }}
                 >
-                  <BsGithub className="size-4" />
-                </GradientButton>
-                <GradientButton
-                  onClick={() => window.open(project.url || "#", "_blank")}
-                  className="border-none cursor-pointer ml-2"
+                  {/* <GradientButton className="text-xs cursor-pointer">
+                    <BsGithub className="size-4" />
+                  </GradientButton> */}
+                </div>
+                <div
+                  onClick={(e: React.MouseEvent) => {
+                    e.stopPropagation();
+                    window.open(project.url || "#", "_blank");
+                  }}
+                  className="cursor-pointer ml-2"
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e: React.KeyboardEvent) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.stopPropagation();
+                      window.open(project.url || "#", "_blank");
+                    }
+                  }}
                 >
-                  <Link className="size-4" />
-                </GradientButton>
+                  {/* <GradientButton className="border-none cursor-pointer">
+                    <LinkIcon className="size-4" />
+                  </GradientButton> */}
+                </div>
               </div>
             </div>
           </div>
