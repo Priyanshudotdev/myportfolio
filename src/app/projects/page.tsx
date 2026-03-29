@@ -4,11 +4,25 @@ import Container from "@/components/common/container";
 import Footer from "@/components/common/footer";
 import { PageNavigation } from "@/components/common/page-navigation";
 import { Badge } from "@/components/ui/badge";
+import { projects } from "@/lib/projects-data";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
+
+type Project = {
+  id: string;
+  title: string;
+  description: string;
+  extendedDescription?: string;
+  tags: string[];
+  image: string;
+  githubUrl: string;
+  liveUrl: string;
+  tweetUrl: string | null;
+  year: string;
+};
 
 const GithubIconSvg = ({ className }: { className?: string }) => (
   <svg
@@ -23,57 +37,19 @@ const GithubIconSvg = ({ className }: { className?: string }) => (
   </svg>
 );
 
-type Project = {
-  id: string;
-  title: string;
-  description: string;
-  extendedDescription?: string;
-  tags: string[];
-  image: string;
-  githubUrl: string;
-  liveUrl: string;
-  tweetUrl?: string | null;
-  year: string;
-};
-
-const PROJECTS: Project[] = [
-  {
-    id: "engineering-india-ycce",
-    title: "Engineering India YCCE",
-    description: "A centralized event management platform with automated ticketing that processed 5,000+ tickets in the first month.",
-    extendedDescription: "Facilitated 5+ events for 3,000+ attendees with QR-based check-ins and sustained 600+ req/sec under load. Built with modern web technologies and optimized for high-traffic event scenarios.",
-    tags: ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion", "React Query", "Better-Auth", "Turso", "Drizzle ORM", "Vercel"],
-    image: "/banner.png",
-    githubUrl: "",
-    liveUrl: "https://engineeringindiaycce.live",
-    tweetUrl: null,
-    year: "2024",
-  },
-  {
-    id: "nexus-collaborative-ide",
-    title: "Nexus",
-    description: "A low-latency real-time collaborative coding platform enabling multiple developers to write and edit code simultaneously.",
-    extendedDescription: "Features Monaco Editor support for 10+ languages with <50ms WebSocket latency. Perfect for pair programming and team coding sessions with seamless real-time synchronization.",
-    tags: ["React", "Node.js", "Express.js", "Socket.io", "Tailwind CSS", "Monaco Editor API", "WebSocket"],
-    image: "/banner.png",
-    githubUrl: "https://github.com/Priyanshudotdev",
-    liveUrl: "",
-    tweetUrl: null,
-    year: "2024",
-  },
-  {
-    id: "maadhyam",
-    title: "Maadhyam",
-    description: "A responsive digital publication platform built with 20+ reusable UI components for a departmental magazine.",
-    extendedDescription: "Designed to modernize the traditional departmental magazine with a digital-first approach. Features article management, responsive layouts, and an intuitive reading experience.",
-    tags: ["Web", "Frontend", "Magazine", "React", "UI Components"],
-    image: "/banner.png",
-    githubUrl: "",
-    liveUrl: "",
-    tweetUrl: null,
-    year: "2023",
-  },
-];
+// Map centralized projects to the format expected by this page
+const PROJECTS: Project[] = projects.map(p => ({
+  id: p.id,
+  title: p.name,
+  description: p.description,
+  extendedDescription: p.description,
+  tags: p.tags || p.techStack || [],
+  image: p.image,
+  githubUrl: p.githubUrl || "",
+  liveUrl: p.url || "",
+  tweetUrl: null,
+  year: "2024",
+}));
 
 const ProjectCard = ({ project }: { project: Project }) => {
   const router = useRouter();
@@ -83,7 +59,6 @@ const ProjectCard = ({ project }: { project: Project }) => {
       onClick={() => router.push(`/project/${project.id}`)}
       className="group cursor-pointer rounded-xl border border-muted bg-muted/30 p-4 transition-all duration-300 hover:border-foreground/20 hover:bg-muted/50"
     >
-      {/* Project Image */}
       <div className="relative mb-4 aspect-16/10 overflow-hidden rounded-lg border border-muted">
         <Image
           src={project.image}
@@ -140,11 +115,10 @@ const ProjectCard = ({ project }: { project: Project }) => {
         </div>
       </div>
 
-      {/* Tags */}
       <div className="mb-4 flex flex-wrap gap-1.5">
         {project.tags.slice(0, 5).map((tag) => (
           <Badge
-            key={tag}
+            key={String(tag)}
             variant="secondary"
             className="border-muted bg-foreground/5 px-2 py-0.5 text-[10px] text-muted-foreground hover:bg-foreground/10"
           >
@@ -161,12 +135,10 @@ const ProjectCard = ({ project }: { project: Project }) => {
         )}
       </div>
 
-      {/* Description */}
       <p className="mb-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
         {project.description}
       </p>
 
-      {/* View Project Link */}
       <div className="mt-3 flex items-center gap-1 text-xs text-muted-foreground transition-colors group-hover:text-foreground">
         <span>View project</span>
         <ChevronRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
@@ -182,7 +154,6 @@ export default function ProjectsPage() {
         <PageNavigation className="px-4 pt-4 sm:px-6" />
 
         <div className="px-6 py-8 sm:px-8">
-          {/* Page Header */}
           <div className="mb-8">
             <h1 className="mb-3 font-serif text-4xl italic text-foreground sm:text-5xl">
               Projects
@@ -192,17 +163,14 @@ export default function ProjectsPage() {
             </p>
           </div>
 
-          {/* Projects Grid */}
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {PROJECTS.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>
 
-          {/* Divider */}
           <div className="my-12 border-t border-muted" />
 
-          {/* GitHub Link */}
           <div className="text-center">
             <Link
               href="https://github.com/Priyanshudotdev?tab=repositories"

@@ -8,6 +8,7 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
+import { projects, getProjectById, type ProjectItem } from "@/lib/projects-data";
 
 const GithubIconSvg = ({ className }: { className?: string }) => (
   <svg
@@ -22,53 +23,43 @@ const GithubIconSvg = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const PROJECTS = {
-  "engineering-india-ycce": {
-    id: "engineering-india-ycce",
-    title: "Engineering India YCCE",
-    description: "A centralized event management platform with automated ticketing that processed 5,000+ tickets in the first month.",
-    extendedDescription: "Facilitated 5+ events for 3,000+ attendees with QR-based check-ins and sustained 600+ req/sec under load. Built with modern web technologies and optimized for high-traffic event scenarios.",
-    tags: ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion", "React Query", "Better-Auth", "Turso", "Drizzle ORM", "Vercel"],
-    image: "/banner.png",
-    githubUrl: "",
-    liveUrl: "https://engineeringindiaycce.live",
-    tweetUrl: null,
-    year: "2024",
-  },
-  "nexus-collaborative-ide": {
-    id: "nexus-collaborative-ide",
-    title: "Nexus",
-    description: "A low-latency real-time collaborative coding platform enabling multiple developers to write and edit code simultaneously.",
-    extendedDescription: "Features Monaco Editor support for 10+ languages with <50ms WebSocket latency. Perfect for pair programming and team coding sessions with seamless real-time synchronization.",
-    tags: ["React", "Node.js", "Express.js", "Socket.io", "Tailwind CSS", "Monaco Editor API", "WebSocket"],
-    image: "/banner.png",
-    githubUrl: "https://github.com/Priyanshudotdev",
-    liveUrl: "",
-    tweetUrl: null,
-    year: "2024",
-  },
-  "maadhyam": {
-    id: "maadhyam",
-    title: "Maadhyam",
-    description: "A responsive digital publication platform built with 20+ reusable UI components for a departmental magazine.",
-    extendedDescription: "Designed to modernize the traditional departmental magazine with a digital-first approach. Features article management, responsive layouts, and an intuitive reading experience.",
-    tags: ["Web", "Frontend", "Magazine", "React", "UI Components"],
-    image: "/banner.png",
-    githubUrl: "",
-    liveUrl: "",
-    tweetUrl: null,
-    year: "2023",
-  },
+// Map ProjectItem to the format expected by the detail page
+type ProjectDetail = {
+  id: string;
+  title: string;
+  description: string;
+  extendedDescription: string;
+  tags: string[];
+  image: string;
+  githubUrl: string;
+  liveUrl: string;
+  tweetUrl: null;
+  year: string;
 };
+
+const mapToProjectDetail = (p: ProjectItem): ProjectDetail => ({
+  id: p.id,
+  title: p.name,
+  description: p.description,
+  extendedDescription: p.description,
+  tags: p.tags || p.techStack || [],
+  image: p.image,
+  githubUrl: p.githubUrl || "",
+  liveUrl: p.url || "",
+  tweetUrl: null,
+  year: "2024",
+});
 
 export default function ProjectPage() {
   const params = useParams();
   const projectId = params.id as string;
-  const project = PROJECTS[projectId as keyof typeof PROJECTS];
+  const projectItem = getProjectById(projectId);
 
-  if (!project) {
+  if (!projectItem) {
     notFound();
   }
+
+  const project = mapToProjectDetail(projectItem);
 
   return (
     <div className="relative w-full min-h-screen">
@@ -138,11 +129,11 @@ export default function ProjectPage() {
             <p className="text-base text-muted-foreground leading-relaxed mb-4">
               {project.description}
             </p>
-            {project.extendedDescription && (
+            {/* {project.extendedDescription && (
               <p className="text-base text-muted-foreground leading-relaxed mb-4">
                 {project.extendedDescription}
               </p>
-            )}
+            )} */}
             {project.tweetUrl && (
               <p className="text-base text-muted-foreground leading-relaxed">
                 {project.description.endsWith(".") ? "" : "."} you can view the{" "}
