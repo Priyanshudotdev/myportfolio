@@ -63,7 +63,6 @@ const ExperienceSection = () => {
                 <div className="flex flex-col">
                   <div className="flex items-center gap-x-4">
                     <h3 className="text-lg">{exp.company}</h3>
-                    {/* Mobile: Plain button without tooltip */}
                     <button
                       type="button"
                       className="sm:hidden p-1 rounded-full cursor-pointer hover:opacity-50"
@@ -135,12 +134,9 @@ const ExperienceSection = () => {
                         { name: "CSS", icon: "/svg/css.svg" },
                         { name: "Docker", icon: "/svg/docker.svg" },
                         { name: "GitHub", icon: "/svg/github.svg" },
-                        { name: "LinkedIn", icon: "/svg/linkedin.svg" },
                         { name: "PostgreSQL", icon: "/svg/postgresql.svg" },
                         { name: "Prisma", icon: "/svg/prisma.svg" },
-                        { name: "GraphQL", icon: "/svg/graphql.svg" },
-                        { name: "Google", icon: "/svg/google.svg" },
-                        { name: "X", icon: "/svg/x.svg" },
+                        
                       ].map((tech) => (
                         <div
                           key={tech.name}

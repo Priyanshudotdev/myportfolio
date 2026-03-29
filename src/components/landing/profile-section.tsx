@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { File } from "lucide-react";
+import { File, Play } from "lucide-react";
 import Image from "next/image";
 import { BsGithub, BsLinkedin, BsPinterest, BsTwitter } from "react-icons/bs";
 import { GoMail } from "react-icons/go";
@@ -40,7 +40,7 @@ const socialLinks = [
   {
     icon: File,
     label: "Resume",
-    href: "https://pinterest.com/Priyanshudotdev",
+    href: "https://drive.google.com/file/d/17hDpp_CqC2Hj05QZgGiNwik3fswSFob6/view?usp=sharing",
   },
 ];
 
@@ -134,11 +134,17 @@ const ProfileHeader = () => {
             <ModeToggle />
           </div>
         </div>
-      </div>
-
-               {/* <div className="px-4 py-6">
-          <YouTubeMusicCard />
-        </div> */}
+           {/* <div className="flex items-center gap-2 text-sm py-4"> */}
+              {/* <div className="flex items-center justify-center w-5 h-5">
+                <Image src="https://www.svgrepo.com/show/343535/youtube-music-song-multimedia-audio.svg" className="size-8" alt="YouTube Music" width={32} height={32} />
+              </div>
+              <span className="text-muted-foreground">Last played</span>
+              <span className="text-muted-foreground">—</span>
+              <span className="text-foreground truncate max-w-[250px]">
+                Dreaming - Marshmello, Migos, blackbear
+              </span>
+            </div> */}
+          </div>
 
       <Divider />
 
@@ -149,10 +155,9 @@ const ProfileHeader = () => {
           I just call it being obsessed with the craft.
         </span>{" "}
         From the first pixel to the final deployment, I care deeply about every
-        layer frontend, backend, AI, and yes, obsession over design details. Not
-        because I have to, but because{" "}
+        layer frontend, backend, AI, and yes,{" "}
         <span className="text-black dark:text-white">
-          I genuinely believe great software should feel as good as it works.
+          obsession over design details.
         </span>
       </p>
     </Container>
