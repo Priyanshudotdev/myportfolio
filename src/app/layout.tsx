@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Hanken_Grotesk, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/common/theme-provider";
+import { cn } from "@/lib/utils";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const hkGrotesk = Hanken_Grotesk({
+  weight: ["400"],
+  style: "normal",
   subsets: ["latin"],
+  variable: "--font-hk-grotesk",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const instrumentSerif = Instrument_Serif({
+  weight: ["400"],
+  style: "normal",
   subsets: ["latin"],
+  variable: "--font-instrument-serif",
 });
 
 export const metadata: Metadata = {
@@ -23,11 +30,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(
+          "h-full antialiased font-sans bg-background/50",
+          "[&_*::selection]:bg-[#121212] [&_*::selection]:text-[#0BC5B3]",
+          "dark:[&_*::selection]:bg-[#04201B] dark:[&_*::selection]:text-[#0BC5B3]",
+          hkGrotesk.className,
+          instrumentSerif.variable,
+        )}
+        suppressHydrationWarning={true}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
