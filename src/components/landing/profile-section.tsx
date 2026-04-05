@@ -6,6 +6,7 @@ import { GoMail } from 'react-icons/go';
 import Container from '../common/container';
 import Divider from '../common/divider';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
+import { ModeToggle } from '@/components/theme-toggle';
 import Banner from './banner';
 
 const socialLinks = [
@@ -75,7 +76,7 @@ const ProfileHeader = () => {
             </p>
             
             {/* Mobile Social Links */}
-            <div className="flex sm:hidden gap-x-2 mt-3">
+            <div className="flex sm:hidden items-center gap-x-2 mt-3">
               <TooltipProvider>
                 {socialLinks.map(({ icon: Icon, label, href }) => (
                   <Tooltip key={label}>
@@ -103,6 +104,9 @@ const ProfileHeader = () => {
                   </Tooltip>
                 ))}
               </TooltipProvider>
+              
+              {/* Mobile Theme Toggle */}
+              <ModeToggle />
             </div>
           </div>
 
