@@ -22,7 +22,7 @@ const Card = ({ project }: { project: ProjectItem }) => {
           'w-full'
       )}
     >
-    <div className="relative w-full h-52 sm:h-40 rounded-md overflow-hidden shrink-0 border border-muted/50">
+    <div className="relative w-full h-52 rounded-md overflow-hidden shrink-0 border border-muted/50">
         <Image
           src={project.image}
           alt={project.name || 'Project image'}
