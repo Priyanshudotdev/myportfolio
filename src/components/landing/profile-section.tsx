@@ -1,46 +1,44 @@
-import { cn } from "@/lib/utils";
-import { File, Play } from "lucide-react";
-import Image from "next/image";
-import { BsGithub, BsLinkedin, BsPinterest, BsTwitter } from "react-icons/bs";
-import { GoMail } from "react-icons/go";
-import Container from "../common/container";
-import Divider from "../common/divider";
-import { ModeToggle } from "../theme-toggle";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "../ui/tooltip";
-import Banner from "./banner";
-import YouTubeMusicCard from "../ui/youtube-music-card";
+import { cn } from '@/lib/utils';
+import { ArrowUpRight, File } from 'lucide-react';
+import Image from 'next/image';
+import { BsGithub, BsLinkedin, BsPinterest, BsTwitterX } from 'react-icons/bs';
+import { GoMail } from 'react-icons/go';
+import Container from '../common/container';
+import Divider from '../common/divider';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
+import Banner from './banner';
 
 const socialLinks = [
   {
     icon: BsGithub,
-    label: "GitHub",
-    href: "https://github.com/Priyanshudotdev",
+    label: 'GitHub',
+    href: 'https://github.com/Priyanshudotdev',
+    previewImage: '/socials/github.png',
   },
   {
-    icon: BsTwitter,
-    label: "Twitter",
-    href: "https://twitter.com/Priyanshudotdev",
+    icon: BsTwitterX,
+    label: 'Twitter',
+    href: 'https://twitter.com/Priyanshudotdev',
+    previewImage: '/socials/x.png',
   },
   {
     icon: BsLinkedin,
-    label: "LinkedIn",
-    href: "https://linkedin.com/in/priyanshukayarkar",
+    label: 'LinkedIn',
+    href: 'https://linkedin.com/in/priyanshukayarkar',
+    previewImage: '/socials/linkedin.png',
   },
   {
     icon: BsPinterest,
-    label: "Pinterest",
-    href: "https://pinterest.com/Priyanshudotdev",
+    label: 'Pinterest',
+    href: 'https://pinterest.com/Priyanshudotdev',
+    previewImage: '/socials/pinterest.png',
   },
-  { icon: GoMail, label: "Mail me", href: "mailto:priyanshudotdev@gmail.com" },
+  { icon: GoMail, label: 'Mail me', href: 'mailto:priyanshudotdev@gmail.com' },
   {
     icon: File,
-    label: "Resume",
-    href: "https://drive.google.com/file/d/17hDpp_CqC2Hj05QZgGiNwik3fswSFob6/view?usp=sharing",
+    label: 'Resume',
+    href: 'https://drive.google.com/file/d/17hDpp_CqC2Hj05QZgGiNwik3fswSFob6/view?usp=sharing',
+    previewImage: '/socials/resume.png',
   },
 ];
 
@@ -50,6 +48,7 @@ const ProfileHeader = () => {
       <Banner
         text="Love the beauty of failing."
         url="https://i.pinimg.com/1200x/70/45/a5/7045a5d2381cc470ced04eb6a6db075d.jpg"
+        // url="https://dor5tbfyod.ufs.sh/f/YvNaarP8hDWwADKBPp35t9aySJgQmrsuVGTdjbC7kfc6hABI"
       />
 
       {/* Profile Section */}
@@ -72,70 +71,78 @@ const ProfileHeader = () => {
               Priyanshu S. Kayarkar
             </h1>
             <p className="text-sm text-muted-foreground mt-1">
-              20 · builder · design enthusiast
+              20 · builder · design enthusiast · CS grad
             </p>
           </div>
 
-          <div className="flex gap-x-2 text-sm items-center">
+          <div className="hidden sm:flex gap-x-2">
+            <TooltipProvider>
+              {socialLinks.map(({ icon: Icon, label, href, previewImage }) => (
+                <Tooltip key={label}>
+                  <TooltipTrigger
+                    type="button"
+                    className={cn(
+                      'group relative cursor-pointer overflow-hidden rounded-full text-sm font-medium transition-all duration-300',
+                      'bg-background border border-border hover:border-foreground/20',
+                      'shadow-[0_1px_0_0_rgba(0,0,0,0.02)_inset,0_-1px_0_0_rgba(0,0,0,0.02)_inset]',
+                      'dark:shadow-[0_1px_0_0_rgba(255,255,255,0.02)_inset,0_-1px_0_0_rgba(255,255,255,0.02)_inset]',
+                      'hover:shadow-[0_0_12px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_0_12px_rgba(255,255,255,0.08)]',
+                      'active:scale-95',
+                      'p-2 text-xs rounded-full'
+                    )}
+                    onClick={() => window.open(href, '_blank', 'noopener,noreferrer')}
+                  >
+                    <Icon className="size-4" />
+                  </TooltipTrigger>
 
-            <div className="sm:hidden flex gap-x-2">
-              {socialLinks.map(({ icon: Icon, label, href }) => (
-                <button
-                  key={label}
-                  type="button"
-                  className={cn(
-                    "group relative cursor-pointer overflow-hidden rounded-full text-sm font-medium transition-all duration-300",
-                    "bg-background border border-border hover:border-foreground/20",
-                    "shadow-[0_1px_0_0_rgba(0,0,0,0.02)_inset,0_-1px_0_0_rgba(0,0,0,0.02)_inset]",
-                    "dark:shadow-[0_1px_0_0_rgba(255,255,255,0.02)_inset,0_-1px_0_0_rgba(255,255,255,0.02)_inset]",
-                    "hover:shadow-[0_0_12px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_0_12px_rgba(255,255,255,0.08)]",
-                    "active:scale-95",
-                    "p-2 text-xs rounded-full",
-                  )}
-                  onClick={() =>
-                    window.open(href, "_blank", "noopener,noreferrer")
-                  }
-                >
-                  <Icon className="size-4" />
-                </button>
+                  <TooltipContent
+                    sideOffset={12}
+                    side="bottom"
+                    className={cn(
+                      'p-0 shadow-none border-0 bg-transparent',
+                      // only show rich preview if there's a screenshot
+                      previewImage ? 'w-64' : 'w-auto'
+                    )}
+                  >
+                    {previewImage ? (
+                      <div className="rounded-xl overflow-hidden border border-muted bg-background shadow-lg shadow-black/10 dark:shadow-black/40">
+                        {/* Screenshot preview */}
+                        <div className="relative w-full h-36 overflow-hidden">
+                          <Image
+                            src={previewImage}
+                            alt={`${label} preview`}
+                            fill
+                            className="object-cover object-top"
+                          />
+                          {/* subtle gradient fade at bottom */}
+                          <div className="absolute inset-x-0 bottom-0 h-8 bg-linear-to-t from-background to-transparent" />
+                        </div>
+
+                        {/* Label footer */}
+                        <div className="flex items-center justify-between px-3 py-2 border-t border-muted">
+                          <div className="flex items-center gap-2">
+                            <Icon className="size-3 text-muted-foreground" />
+                            <span className="text-xs text-muted-foreground font-medium">
+                              {label}
+                            </span>
+                          </div>
+                          <ArrowUpRight className="size-3 text-muted-foreground" />
+                        </div>
+                      </div>
+                    ) : (
+                      // fallback: plain label tooltip (for links without a preview)
+                      <div className="rounded-md bg-background border border-muted px-2.5 py-1.5 shadow-sm">
+                        <span className="text-xs text-muted-foreground">{label}</span>
+                      </div>
+                    )}
+                  </TooltipContent>
+                </Tooltip>
               ))}
-            </div>
-
-            {/* Desktop: Buttons with tooltip */}
-            <div className="hidden sm:flex gap-x-2">
-              <TooltipProvider>
-                {socialLinks.map(({ icon: Icon, label, href }) => (
-                  <Tooltip key={label}>
-                    <TooltipTrigger
-                      type="button"
-                      className={cn(
-                        "group relative cursor-pointer overflow-hidden rounded-full text-sm font-medium transition-all duration-300",
-                        "bg-background border border-border hover:border-foreground/20",
-                        "shadow-[0_1px_0_0_rgba(0,0,0,0.02)_inset,0_-1px_0_0_rgba(0,0,0,0.02)_inset]",
-                        "dark:shadow-[0_1px_0_0_rgba(255,255,255,0.02)_inset,0_-1px_0_0_rgba(255,255,255,0.02)_inset]",
-                        "hover:shadow-[0_0_12px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_0_12px_rgba(255,255,255,0.08)]",
-                        "active:scale-95",
-                        "p-2 text-xs rounded-full",
-                      )}
-                      onClick={() =>
-                        window.open(href, "_blank", "noopener,noreferrer")
-                      }
-                    >
-                      <Icon className="size-4" />
-                    </TooltipTrigger>
-                    <TooltipContent sideOffset={10} className="shadow-none">
-                      {label}
-                    </TooltipContent>
-                  </Tooltip>
-                ))}
-              </TooltipProvider>
-            </div>
-
-            <ModeToggle />
+            </TooltipProvider>
           </div>
         </div>
-           {/* <div className="flex items-center gap-2 text-sm py-4"> */}
-              {/* <div className="flex items-center justify-center w-5 h-5">
+        {/* <div className="flex items-center gap-2 text-sm py-4"> */}
+        {/* <div className="flex items-center justify-center w-5 h-5">
                 <Image src="https://www.svgrepo.com/show/343535/youtube-music-song-multimedia-audio.svg" className="size-8" alt="YouTube Music" width={32} height={32} />
               </div>
               <span className="text-muted-foreground">Last played</span>
@@ -144,21 +151,19 @@ const ProfileHeader = () => {
                 Dreaming - Marshmello, Migos, blackbear
               </span>
             </div> */}
-          </div>
+      </div>
 
       <Divider />
 
       {/* Desc */}
       <p className="py-2 px-4 sm:px-8 text-muted-foreground">
-        People call me a full-stack developer{" "}
+        People call me a full-stack developer{' '}
         <span className="text-black dark:text-white">
           I just call it being obsessed with the craft.
-        </span>{" "}
-        From the first pixel to the final deployment, I care deeply about every
-        layer frontend, backend, AI, and yes,{" "}
-        <span className="text-black dark:text-white">
-          obsession over design details.
-        </span>
+        </span>{' '}
+        From the first pixel to the final deployment, I care deeply about every layer frontend,
+        backend, AI, and yes,{' '}
+        <span className="text-black dark:text-white">obsession over design details.</span>
       </p>
     </Container>
   );
