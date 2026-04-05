@@ -73,6 +73,37 @@ const ProfileHeader = () => {
             <p className="text-sm text-muted-foreground mt-1">
               20 · builder · design enthusiast · CS grad
             </p>
+            
+            {/* Mobile Social Links */}
+            <div className="flex sm:hidden gap-x-2 mt-3">
+              <TooltipProvider>
+                {socialLinks.map(({ icon: Icon, label, href }) => (
+                  <Tooltip key={label}>
+                    <TooltipTrigger
+                      type="button"
+                      className={cn(
+                        'group relative cursor-pointer overflow-hidden rounded-full text-sm font-medium transition-all duration-300',
+                        'bg-background border border-border hover:border-foreground/20',
+                        'shadow-[0_1px_0_0_rgba(0,0,0,0.02)_inset,0_-1px_0_0_rgba(0,0,0,0.02)_inset]',
+                        'dark:shadow-[0_1px_0_0_rgba(255,255,255,0.02)_inset,0_-1px_0_0_rgba(255,255,255,0.02)_inset]',
+                        'hover:shadow-[0_0_12px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_0_12px_rgba(255,255,255,0.08)]',
+                        'active:scale-95',
+                        'p-2 text-xs rounded-full'
+                      )}
+                      onClick={() => window.open(href, '_blank', 'noopener,noreferrer')}
+                    >
+                      <Icon className="size-4" />
+                    </TooltipTrigger>
+
+                    <TooltipContent sideOffset={8} side="top">
+                      <div className="rounded-md bg-background border border-muted px-2.5 py-1.5 shadow-sm">
+                        <span className="text-xs text-muted-foreground">{label}</span>
+                      </div>
+                    </TooltipContent>
+                  </Tooltip>
+                ))}
+              </TooltipProvider>
+            </div>
           </div>
 
           <div className="hidden sm:flex gap-x-2">
