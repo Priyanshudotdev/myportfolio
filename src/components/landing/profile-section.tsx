@@ -174,6 +174,9 @@ const ProfileHeader = () => {
                 </Tooltip>
               ))}
             </TooltipProvider>
+            
+            {/* Desktop Theme Toggle */}
+            <ModeToggle />
           </div>
         </div>
         {/* <div className="flex items-center gap-2 text-sm py-4"> */}
