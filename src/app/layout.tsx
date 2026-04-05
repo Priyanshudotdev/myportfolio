@@ -23,6 +23,14 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: "Priyanshu Kayarkar | Developer",
   description: "Fullstack Developer building modern web applications",
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.jpg', type: 'image/jpeg' }
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/favicon.jpg',
+  },
 };
 
 export default function RootLayout({
