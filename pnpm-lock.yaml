@@ -29,6 +29,9 @@ importers:
       motion:
         specifier: ^12.38.0
         version: 12.38.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      neko-ts:
+        specifier: ^0.0.6
+        version: 0.0.6
       next:
         specifier: 16.2.1
         version: 16.2.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -1374,6 +1377,9 @@ packages:
     resolution: {integrity: sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
+
+  neko-ts@0.0.6:
+    resolution: {integrity: sha512-PqKIgmqD1LwRM7fb1gqC3ITbojxB47hZmm6eUYjLUAM5w1+KnQ9TZxMDMJHl7pK0XE37ekMPSD7Vzfn0Pa6wow==}
 
   next-themes@0.4.6:
     resolution: {integrity: sha512-pZvgD5L0IEvX5/9GWyHMf3m8BKiVQwsCMHfoFosXtXBMnaS0ZnIJ9ST4b4NqLVKDEm8QBxoNNGNaBv2JNF6XNA==}
@@ -2771,6 +2777,8 @@ snapshots:
       react-dom: 19.2.4(react@19.2.4)
 
   nanoid@3.3.11: {}
+
+  neko-ts@0.0.6: {}
 
   next-themes@0.4.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
     dependencies:
