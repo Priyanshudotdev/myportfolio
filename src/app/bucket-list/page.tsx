@@ -6,8 +6,7 @@ import { PageNavigation } from "@/components/common/page-navigation";
 import { Check } from "lucide-react";
 
 const BUCKET_LIST_ITEMS = [
-  { id: 1, text: "Get married", completed: false },
-  // { id: 2, text: "Own a house", completed: false },
+  { id: 1, text: "Create an animated movie", completed: false },
   // { id: 3, text: "Own a car", completed: false },
   // { id: 4, text: "Learn how to drive a car", completed: false },
   // { id: 5, text: "Visit the Amazon rainforest", completed: false },
@@ -25,13 +24,14 @@ const BUCKET_LIST_ITEMS = [
   // { id: 17, text: "Play a full team basketball match", completed: false },
   // { id: 18, text: "Score a goal in a football match", completed: true },
   // { id: 19, text: "Visit all 7 continents", completed: false },
-  // { id: 20, text: "Learn to play the piano", completed: false },
+  { id: 20, text: "Learn to play the guitar", completed: false },
   // { id: 21, text: "Write a book", completed: false },
   // { id: 22, text: "Learn to surf", completed: false },
   // { id: 23, text: "See the Northern Lights", completed: false },
   // { id: 24, text: "Go skydiving", completed: false },
-  // { id: 25, text: "Learn to cook 10 dishes perfectly", completed: false },
-  // { id: 26, text: "Visit Japan during cherry blossom season", completed: false },
+  { id: 25, text: "Learn to cook 10 dishes perfectly", completed: false },
+  { id: 26, text: "Visit Japan during cherry blossom season", completed: false },
+  { id: 2, text: "Own a house", completed: false },
   // { id: 27, text: "Climb a mountain over 4000m", completed: false },
   // { id: 28, text: "Learn a third language fluently", completed: false },
   // { id: 29, text: "Start a business", completed: false },
