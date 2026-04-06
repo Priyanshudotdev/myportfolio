@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/common/theme-provider";
 import { cn } from "@/lib/utils";
 import OnekoCat from "@/components/common/oneko-car";
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const hkGrotesk = Hanken_Grotesk({
   weight: ["400"],
@@ -57,6 +59,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Analytics />
+          <SpeedInsights />
           <OnekoCat />
         </ThemeProvider>
       </body>
