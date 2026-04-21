@@ -1,9 +1,9 @@
 "use client";
 
-import Script from 'next/script';
+import Script from "next/script";
 
 export const catConfig = {
-  enabled: true, 
+  enabled: true,
 };
 
 export default function OnekoCat() {

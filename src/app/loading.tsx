@@ -1,5 +1,3 @@
-import { cn } from "@/lib/utils";
-
 export default function GlobalLoading() {
   return (
     <div className="relative min-h-screen w-full animate-pulse">

@@ -15,10 +15,7 @@ export function PageNavigation({ className }: PageNavigationProps) {
 
   return (
     <nav
-      className={cn(
-        "flex items-center justify-between px-4 py-3",
-        className
-      )}
+      className={cn("flex items-center justify-between px-4 py-3", className)}
     >
       {/* Left */}
       <div className="flex items-center gap-2 bg-muted/80 dark:bg-muted/50 rounded-full p-1.5">
@@ -38,7 +35,7 @@ export function PageNavigation({ className }: PageNavigationProps) {
           <Undo2 className="w-4 h-4 text-foreground" />
         </button>
       </div>
-{/* right */}
+      {/* right */}
       <div className="bg-muted/80 dark:bg-muted/50 rounded-full">
         <div className="flex items-center justify-center rounded-full bg-background hover:bg-background/80 transition-colors">
           <ModeToggle />

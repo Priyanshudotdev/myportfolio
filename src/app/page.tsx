@@ -9,7 +9,6 @@ import MyPlayground from "@/components/landing/my-playground";
 import ProfileSection from "@/components/landing/profile-section";
 import ProofOfWork from "@/components/landing/proof-of-work";
 import TechStack from "@/components/landing/tech-stack";
-import { YouTubeMusicCard } from "@/components/ui/youtube-music-card";
 
 export default function Home() {
   return (

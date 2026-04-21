@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import OnekoCat from "@/components/common/oneko-car";
 import { ThemeProvider } from "@/components/common/theme-provider";
 import { cn } from "@/lib/utils";
-import OnekoCat from "@/components/common/oneko-car";
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const hkGrotesk = Hanken_Grotesk({
   weight: ["400"],
@@ -28,11 +28,11 @@ export const metadata: Metadata = {
   description: "Fullstack Developer building modern web applications",
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/favicon.jpg', type: 'image/jpeg' }
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.jpg", type: "image/jpeg" },
     ],
-    shortcut: '/favicon.ico',
-    apple: '/favicon.jpg',
+    shortcut: "/favicon.ico",
+    apple: "/favicon.jpg",
   },
   openGraph: {
     title: "Priyanshu Kayarkar | Developer",

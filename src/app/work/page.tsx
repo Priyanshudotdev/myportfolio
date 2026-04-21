@@ -25,7 +25,8 @@ const PROJECTS = [
   {
     id: 1,
     title: "Portfolio Website",
-    description: "Personal portfolio built with Next.js, TypeScript, and Tailwind CSS. Features dark mode, responsive design, and interactive components.",
+    description:
+      "Personal portfolio built with Next.js, TypeScript, and Tailwind CSS. Features dark mode, responsive design, and interactive components.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
     githubUrl: "https://github.com/Priyanshudotdev/portfolio",
     liveUrl: "https://priyanshudotdev.vercel.app",
@@ -34,7 +35,8 @@ const PROJECTS = [
   {
     id: 2,
     title: "E-Commerce Platform",
-    description: "Full-stack e-commerce application with user authentication, payment integration, and admin dashboard.",
+    description:
+      "Full-stack e-commerce application with user authentication, payment integration, and admin dashboard.",
     tags: ["React", "Node.js", "PostgreSQL", "Stripe"],
     githubUrl: "https://github.com/Priyanshudotdev/ecommerce",
     liveUrl: "https://demo-ecommerce.vercel.app",
@@ -43,7 +45,8 @@ const PROJECTS = [
   {
     id: 3,
     title: "Task Management App",
-    description: "Collaborative task management tool with real-time updates, drag-and-drop interface, and team workspaces.",
+    description:
+      "Collaborative task management tool with real-time updates, drag-and-drop interface, and team workspaces.",
     tags: ["Next.js", "Prisma", "WebSocket", "Docker"],
     githubUrl: "https://github.com/Priyanshudotdev/tasks",
     liveUrl: "https://tasks-demo.vercel.app",
@@ -52,7 +55,8 @@ const PROJECTS = [
   {
     id: 4,
     title: "AI Content Generator",
-    description: "AI-powered content generation tool using OpenAI API for blog posts, social media, and marketing copy.",
+    description:
+      "AI-powered content generation tool using OpenAI API for blog posts, social media, and marketing copy.",
     tags: ["Python", "FastAPI", "OpenAI", "React"],
     githubUrl: "https://github.com/Priyanshudotdev/ai-content",
     liveUrl: "https://ai-content-demo.vercel.app",
@@ -61,7 +65,8 @@ const PROJECTS = [
   {
     id: 5,
     title: "Weather Dashboard",
-    description: "Real-time weather application with location-based forecasts, interactive maps, and severe weather alerts.",
+    description:
+      "Real-time weather application with location-based forecasts, interactive maps, and severe weather alerts.",
     tags: ["React", "Mapbox", "Weather API", "PWA"],
     githubUrl: "https://github.com/Priyanshudotdev/weather",
     liveUrl: "https://weather-demo.vercel.app",
@@ -70,7 +75,8 @@ const PROJECTS = [
   {
     id: 6,
     title: "Developer Tools CLI",
-    description: "Command-line utility for common development tasks including project scaffolding, git workflows, and deployment helpers.",
+    description:
+      "Command-line utility for common development tasks including project scaffolding, git workflows, and deployment helpers.",
     tags: ["Rust", "CLI", "Git", "DevOps"],
     githubUrl: "https://github.com/Priyanshudotdev/devtools",
     liveUrl: null,
@@ -83,7 +89,7 @@ export default function WorkPage() {
     <div className="relative w-full min-h-screen">
       <Container className="border-l border-r bg-background border-l-muted border-r-muted z-10 min-h-screen h-full w-full">
         <PageNavigation className="pt-4 px-4 sm:px-6" />
-        
+
         <div className="px-6 sm:px-8 py-12">
           {/* Header Section */}
           <div className="mb-12">
@@ -91,8 +97,9 @@ export default function WorkPage() {
               Selected Work
             </h1>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-              A collection of projects I&apos;ve worked on. Each project represents a unique challenge 
-              and learning opportunity. Built with modern technologies and best practices.
+              A collection of projects I&apos;ve worked on. Each project
+              represents a unique challenge and learning opportunity. Built with
+              modern technologies and best practices.
             </p>
           </div>
 
@@ -109,7 +116,9 @@ export default function WorkPage() {
                     <h3 className="font-medium text-lg text-foreground group-hover:text-foreground/90">
                       {project.title}
                     </h3>
-                    <span className="text-xs text-muted-foreground">{project.year}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {project.year}
+                    </span>
                   </div>
                   <div className="flex items-center gap-2">
                     {project.githubUrl && (
@@ -174,7 +183,7 @@ export default function WorkPage() {
             </Link>
           </div>
         </div>
-        
+
         <Footer />
       </Container>
     </div>

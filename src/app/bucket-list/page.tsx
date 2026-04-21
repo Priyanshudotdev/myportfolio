@@ -1,9 +1,9 @@
 "use client";
 
+import { Check } from "lucide-react";
 import Container from "@/components/common/container";
 import Footer from "@/components/common/footer";
 import { PageNavigation } from "@/components/common/page-navigation";
-import { Check } from "lucide-react";
 
 const BUCKET_LIST_ITEMS = [
   { id: 1, text: "Create an animated movie", completed: false },
@@ -30,7 +30,11 @@ const BUCKET_LIST_ITEMS = [
   // { id: 23, text: "See the Northern Lights", completed: false },
   // { id: 24, text: "Go skydiving", completed: false },
   { id: 25, text: "Learn to cook 10 dishes perfectly", completed: false },
-  { id: 26, text: "Visit Japan during cherry blossom season", completed: false },
+  {
+    id: 26,
+    text: "Visit Japan during cherry blossom season",
+    completed: false,
+  },
   { id: 2, text: "Own a house", completed: false },
   // { id: 27, text: "Climb a mountain over 4000m", completed: false },
   // { id: 28, text: "Learn a third language fluently", completed: false },
@@ -39,7 +43,9 @@ const BUCKET_LIST_ITEMS = [
 ];
 
 export default function BucketListPage() {
-  const completedCount = BUCKET_LIST_ITEMS.filter((item) => item.completed).length;
+  const completedCount = BUCKET_LIST_ITEMS.filter(
+    (item) => item.completed,
+  ).length;
   const totalCount = BUCKET_LIST_ITEMS.length;
   const progressPercentage = Math.round((completedCount / totalCount) * 100);
 
@@ -56,14 +62,19 @@ export default function BucketListPage() {
               Thought on: Arpil 7, 2023
             </p>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-              Note: I&apos;ve intentionally chosen not to add or remove anything from this list. It captures who I am right now and what <span className="text-white/90">I hope to achieve before I turn 100.</span>
+              Note: I&apos;ve intentionally chosen not to add or remove anything
+              from this list. It captures who I am right now and what{" "}
+              <span className="text-white/90">
+                I hope to achieve before I turn 100.
+              </span>
             </p>
           </div>
 
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-3">
               <span className="text-sm text-foreground">
-                Completed {completedCount} of {totalCount} ({progressPercentage}%)
+                Completed {completedCount} of {totalCount} ({progressPercentage}
+                %)
               </span>
               <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden max-w-[200px]">
                 <div
@@ -98,7 +109,10 @@ export default function BucketListPage() {
                   `}
                 >
                   {item.completed && (
-                    <Check className="w-3 h-3 text-background dark:text-background" strokeWidth={3} />
+                    <Check
+                      className="w-3 h-3 text-background dark:text-background"
+                      strokeWidth={3}
+                    />
                   )}
                 </div>
                 <span

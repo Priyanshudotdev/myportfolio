@@ -1,45 +1,50 @@
-import { cn } from '@/lib/utils';
-import { ArrowUpRight, File } from 'lucide-react';
-import Image from 'next/image';
-import { BsGithub, BsLinkedin, BsPinterest, BsTwitterX } from 'react-icons/bs';
-import { GoMail } from 'react-icons/go';
-import Container from '../common/container';
-import Divider from '../common/divider';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
-import { ModeToggle } from '@/components/theme-toggle';
-import Banner from './banner';
+import { ArrowUpRight, File } from "lucide-react";
+import Image from "next/image";
+import { BsGithub, BsLinkedin, BsPinterest, BsTwitterX } from "react-icons/bs";
+import { GoMail } from "react-icons/go";
+import { ModeToggle } from "@/components/theme-toggle";
+import { cn } from "@/lib/utils";
+import Container from "../common/container";
+import Divider from "../common/divider";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../ui/tooltip";
+import Banner from "./banner";
 
 const socialLinks = [
   {
     icon: BsGithub,
-    label: 'GitHub',
-    href: 'https://github.com/Priyanshudotdev',
-    previewImage: '/socials/github.png',
+    label: "GitHub",
+    href: "https://github.com/Priyanshudotdev",
+    previewImage: "/socials/github.png",
   },
   {
     icon: BsTwitterX,
-    label: 'Twitter',
-    href: 'https://twitter.com/Priyanshudotdev',
-    previewImage: '/socials/x.png',
+    label: "Twitter",
+    href: "https://twitter.com/Priyanshudotdev",
+    previewImage: "/socials/x.png",
   },
   {
     icon: BsLinkedin,
-    label: 'LinkedIn',
-    href: 'https://linkedin.com/in/priyanshukayarkar',
-    previewImage: '/socials/linkedin.png',
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/priyanshukayarkar",
+    previewImage: "/socials/linkedin.png",
   },
   {
     icon: BsPinterest,
-    label: 'Pinterest',
-    href: 'https://pinterest.com/Priyanshudotdev',
-    previewImage: '/socials/pinterest.png',
+    label: "Pinterest",
+    href: "https://pinterest.com/Priyanshudotdev",
+    previewImage: "/socials/pinterest.png",
   },
-  { icon: GoMail, label: 'Mail me', href: 'mailto:priyanshudotdev@gmail.com' },
+  { icon: GoMail, label: "Mail me", href: "mailto:priyanshudotdev@gmail.com" },
   {
     icon: File,
-    label: 'Resume',
-    href: 'https://drive.google.com/file/d/17hDpp_CqC2Hj05QZgGiNwik3fswSFob6/view?usp=sharing',
-    previewImage: '/socials/resume.png',
+    label: "Resume",
+    href: "https://drive.google.com/file/d/17hDpp_CqC2Hj05QZgGiNwik3fswSFob6/view?usp=sharing",
+    previewImage: "/socials/resume.png",
   },
 ];
 
@@ -74,7 +79,7 @@ const ProfileHeader = () => {
             <p className="text-sm text-muted-foreground mt-1">
               20 · builder · design enthusiast · CS grad
             </p>
-            
+
             {/* Mobile Social Links */}
             <div className="flex sm:hidden items-center gap-x-2 mt-3">
               <TooltipProvider>
@@ -83,28 +88,32 @@ const ProfileHeader = () => {
                     <TooltipTrigger
                       type="button"
                       className={cn(
-                        'group relative cursor-pointer overflow-hidden rounded-full text-sm font-medium transition-all duration-300',
-                        'bg-background border border-border hover:border-foreground/20',
-                        'shadow-[0_1px_0_0_rgba(0,0,0,0.02)_inset,0_-1px_0_0_rgba(0,0,0,0.02)_inset]',
-                        'dark:shadow-[0_1px_0_0_rgba(255,255,255,0.02)_inset,0_-1px_0_0_rgba(255,255,255,0.02)_inset]',
-                        'hover:shadow-[0_0_12px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_0_12px_rgba(255,255,255,0.08)]',
-                        'active:scale-95',
-                        'p-2 text-xs rounded-full'
+                        "group relative cursor-pointer overflow-hidden rounded-full text-sm font-medium transition-all duration-300",
+                        "bg-background border border-border hover:border-foreground/20",
+                        "shadow-[0_1px_0_0_rgba(0,0,0,0.02)_inset,0_-1px_0_0_rgba(0,0,0,0.02)_inset]",
+                        "dark:shadow-[0_1px_0_0_rgba(255,255,255,0.02)_inset,0_-1px_0_0_rgba(255,255,255,0.02)_inset]",
+                        "hover:shadow-[0_0_12px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_0_12px_rgba(255,255,255,0.08)]",
+                        "active:scale-95",
+                        "p-2 text-xs rounded-full",
                       )}
-                      onClick={() => window.open(href, '_blank', 'noopener,noreferrer')}
+                      onClick={() =>
+                        window.open(href, "_blank", "noopener,noreferrer")
+                      }
                     >
                       <Icon className="size-4" />
                     </TooltipTrigger>
 
                     <TooltipContent sideOffset={8} side="top">
                       <div className="rounded-md bg-background border border-muted px-2.5 py-1.5 shadow-sm">
-                        <span className="text-xs text-muted-foreground">{label}</span>
+                        <span className="text-xs text-muted-foreground">
+                          {label}
+                        </span>
                       </div>
                     </TooltipContent>
                   </Tooltip>
                 ))}
               </TooltipProvider>
-              
+
               {/* Mobile Theme Toggle */}
               <ModeToggle />
             </div>
@@ -117,15 +126,17 @@ const ProfileHeader = () => {
                   <TooltipTrigger
                     type="button"
                     className={cn(
-                      'group relative cursor-pointer overflow-hidden rounded-full text-sm font-medium transition-all duration-300',
-                      'bg-background border border-border hover:border-foreground/20',
-                      'shadow-[0_1px_0_0_rgba(0,0,0,0.02)_inset,0_-1px_0_0_rgba(0,0,0,0.02)_inset]',
-                      'dark:shadow-[0_1px_0_0_rgba(255,255,255,0.02)_inset,0_-1px_0_0_rgba(255,255,255,0.02)_inset]',
-                      'hover:shadow-[0_0_12px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_0_12px_rgba(255,255,255,0.08)]',
-                      'active:scale-95',
-                      'p-2 text-xs rounded-full'
+                      "group relative cursor-pointer overflow-hidden rounded-full text-sm font-medium transition-all duration-300",
+                      "bg-background border border-border hover:border-foreground/20",
+                      "shadow-[0_1px_0_0_rgba(0,0,0,0.02)_inset,0_-1px_0_0_rgba(0,0,0,0.02)_inset]",
+                      "dark:shadow-[0_1px_0_0_rgba(255,255,255,0.02)_inset,0_-1px_0_0_rgba(255,255,255,0.02)_inset]",
+                      "hover:shadow-[0_0_12px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_0_12px_rgba(255,255,255,0.08)]",
+                      "active:scale-95",
+                      "p-2 text-xs rounded-full",
                     )}
-                    onClick={() => window.open(href, '_blank', 'noopener,noreferrer')}
+                    onClick={() =>
+                      window.open(href, "_blank", "noopener,noreferrer")
+                    }
                   >
                     <Icon className="size-4" />
                   </TooltipTrigger>
@@ -134,9 +145,9 @@ const ProfileHeader = () => {
                     sideOffset={12}
                     side="bottom"
                     className={cn(
-                      'p-0 shadow-none border-0 bg-transparent',
+                      "p-0 shadow-none border-0 bg-transparent",
                       // only show rich preview if there's a screenshot
-                      previewImage ? 'w-64' : 'w-auto'
+                      previewImage ? "w-64" : "w-auto",
                     )}
                   >
                     {previewImage ? (
@@ -167,14 +178,16 @@ const ProfileHeader = () => {
                     ) : (
                       // fallback: plain label tooltip (for links without a preview)
                       <div className="rounded-md bg-background border border-muted px-2.5 py-1.5 shadow-sm">
-                        <span className="text-xs text-muted-foreground">{label}</span>
+                        <span className="text-xs text-muted-foreground">
+                          {label}
+                        </span>
                       </div>
                     )}
                   </TooltipContent>
                 </Tooltip>
               ))}
             </TooltipProvider>
-            
+
             {/* Desktop Theme Toggle */}
             <ModeToggle />
           </div>
@@ -195,13 +208,15 @@ const ProfileHeader = () => {
 
       {/* Desc */}
       <p className="py-2 px-4 sm:px-8 text-muted-foreground">
-        People call me a full-stack developer{' '}
+        People call me a full-stack developer{" "}
         <span className="text-black dark:text-white">
           I just call it being obsessed with the craft.
-        </span>{' '}
-        From the first pixel to the final deployment, I care deeply about every layer frontend,
-        backend, AI, and yes,{' '}
-        <span className="text-black dark:text-white">obsession over design details.</span>
+        </span>{" "}
+        From the first pixel to the final deployment, I care deeply about every
+        layer frontend, backend, AI, and yes,{" "}
+        <span className="text-black dark:text-white">
+          obsession over design details.
+        </span>
       </p>
     </Container>
   );

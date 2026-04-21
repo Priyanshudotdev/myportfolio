@@ -136,7 +136,6 @@ const ExperienceSection = () => {
                         { name: "GitHub", icon: "/svg/github.svg" },
                         { name: "PostgreSQL", icon: "/svg/postgresql.svg" },
                         { name: "Prisma", icon: "/svg/prisma.svg" },
-                        
                       ].map((tech) => (
                         <div
                           key={tech.name}

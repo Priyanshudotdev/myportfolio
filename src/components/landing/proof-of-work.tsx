@@ -1,7 +1,7 @@
+import { projects } from "@/lib/projects-data";
 import Container from "../common/container";
 import Heading from "../common/Heading";
 import ProjectCard from "./project-card";
-import { projects, ProjectItem } from "@/lib/projects-data";
 
 export type { ProjectItem } from "@/lib/projects-data";
 

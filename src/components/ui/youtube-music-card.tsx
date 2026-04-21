@@ -33,7 +33,9 @@ function formatTime(seconds: number): string {
   return `${mins}:${secs.toString().padStart(2, "0")}`;
 }
 
-export function YouTubeMusicCard({ track = defaultTrack }: YouTubeMusicCardProps) {
+export function YouTubeMusicCard({
+  track = defaultTrack,
+}: YouTubeMusicCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const progressPercent = (track.currentTime / track.duration) * 100;
 
@@ -43,7 +45,7 @@ export function YouTubeMusicCard({ track = defaultTrack }: YouTubeMusicCardProps
       <div
         className={cn(
           "absolute inset-0 scale-110 bg-cover bg-center opacity-30 blur-2xl transition-opacity duration-500",
-          imageLoaded ? "opacity-30" : "opacity-0"
+          imageLoaded ? "opacity-30" : "opacity-0",
         )}
         style={{ backgroundImage: `url(${track.albumArt})` }}
       />
@@ -54,16 +56,26 @@ export function YouTubeMusicCard({ track = defaultTrack }: YouTubeMusicCardProps
       )}
 
       {/* Subtle dark overlay for readability */}
-      <div className={cn(
-        "absolute inset-0 bg-black/40 transition-opacity duration-500",
-        imageLoaded ? "opacity-100" : "opacity-0"
-      )} />
+      <div
+        className={cn(
+          "absolute inset-0 bg-black/40 transition-opacity duration-500",
+          imageLoaded ? "opacity-100" : "opacity-0",
+        )}
+      />
 
       <div className="relative z-10 p-4">
         {/* ── Header: now playing label ── */}
         <div className="mb-3 flex items-center gap-2">
           {/* YouTube Music logo mark */}
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            role="img"
+            aria-label="YouTube Music"
+          >
+            <title>YouTube Music</title>
             <circle cx="12" cy="12" r="12" fill="#FF0000" />
             <circle cx="12" cy="12" r="5" fill="white" />
             <circle cx="12" cy="12" r="2.5" fill="#FF0000" />
@@ -95,7 +107,7 @@ export function YouTubeMusicCard({ track = defaultTrack }: YouTubeMusicCardProps
               fill
               className={cn(
                 "object-cover transition-all duration-500",
-                imageLoaded ? "blur-0 opacity-100" : "blur-md opacity-0"
+                imageLoaded ? "blur-0 opacity-100" : "blur-md opacity-0",
               )}
               priority
               onLoad={() => setImageLoaded(true)}
@@ -119,8 +131,12 @@ export function YouTubeMusicCard({ track = defaultTrack }: YouTubeMusicCardProps
                     E
                   </span>
                 </div>
-                <p className="truncate text-[12px] text-white/60">{track.artist}</p>
-                <p className="truncate text-[11px] text-white/35">{track.album}</p>
+                <p className="truncate text-[12px] text-white/60">
+                  {track.artist}
+                </p>
+                <p className="truncate text-[11px] text-white/35">
+                  {track.album}
+                </p>
               </>
             )}
           </div>

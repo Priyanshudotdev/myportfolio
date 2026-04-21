@@ -1,5 +1,3 @@
-import { cn } from "@/lib/utils";
-
 export default function PageLoading() {
   return (
     <div className="relative flex min-h-[50vh] items-center justify-center">
