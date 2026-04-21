@@ -1,15 +1,15 @@
 'use client';
 
-import Container from '@/components/common/container';
-import Footer from '@/components/common/footer';
-import { PageNavigation } from '@/components/common/page-navigation';
-import { Badge } from '@/components/ui/badge';
-import { projects } from '@/lib/projects-data';
 import { ArrowUpRight, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import Container from '@/components/common/container';
+import Footer from '@/components/common/footer';
+import { PageNavigation } from '@/components/common/page-navigation';
+import { Badge } from '@/components/ui/badge';
+import { projects } from '@/lib/projects-data';
 
 type Project = {
   id: string;

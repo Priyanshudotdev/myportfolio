@@ -33,6 +33,28 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
     apple: '/favicon.jpg',
   },
+  openGraph: {
+    title: "Priyanshu Kayarkar | Developer",
+    description: "Fullstack Developer building modern web applications",
+    url: "https://priyanshuu.tech",
+    siteName: "Priyanshu Kayarkar",
+    images: [
+      {
+        url: "/banner.png",
+        width: 1200,
+        height: 630,
+        alt: "Priyanshu Kayarkar - Fullstack Developer",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Priyanshu Kayarkar | Developer",
+    description: "Fullstack Developer building modern web applications",
+    images: ["/banner.png"],
+  },
 };
 
 export default function RootLayout({
