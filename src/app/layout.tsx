@@ -20,6 +20,7 @@ const instrumentSerif = Instrument_Serif({
   style: "normal",
   subsets: ["latin"],
   variable: "--font-instrument-serif",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     siteName: "Priyanshu Kayarkar",
     images: [
       {
-        url: "/banner.png",
+        url: "https://priyanshuu.tech/banner.png",
         width: 1200,
         height: 630,
         alt: "Priyanshu Kayarkar - Fullstack Developer",
@@ -53,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Priyanshu Kayarkar | Developer",
     description: "Fullstack Developer building modern web applications",
-    images: ["/banner.png"],
+    images: ["https://priyanshuu.tech/banner.png"],
   },
 };
 
