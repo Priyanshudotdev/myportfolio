@@ -25,7 +25,7 @@ Here is how we typically think about the feedback loop in modern UI:
 2. **Reaction**: Visual feedback within 16ms (60fps).
 3. **Outcome**: The system state updates.
 
-```typescript
+```typescript:index.ts
 // A simple hook for intentional feedback
 function useIntention() {
   const [active, setActive] = useState(false);
@@ -39,7 +39,7 @@ function useIntention() {
 }
 ```
 ---
-```typescript
+```typescript:/index.html
 // A simple hook for intentional feedback
 function useIntention() {
   const [active, setActive] = useState(false);
