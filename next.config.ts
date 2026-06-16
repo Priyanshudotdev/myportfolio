@@ -3,7 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    domains: ["vectorlab.in", "i.pinimg.com", "dor5tbfyod.ufs.sh"],
+    domains: [
+      "vectorlab.in",
+      "i.pinimg.com",
+      "dor5tbfyod.ufs.sh",
+      "cdn.sanity.io",
+    ],
     remotePatterns: [
       {
         protocol: "https",
