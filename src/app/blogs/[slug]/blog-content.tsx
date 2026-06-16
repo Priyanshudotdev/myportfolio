@@ -106,7 +106,7 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
                             <div className="w-2 h-2 rounded-full bg-amber-500/20" />
                             <div className="w-2 h-2 rounded-full bg-emerald-500/20" />
                           </div>
-                          <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                          <span className="text-[10px] font-bold tracking-widest text-muted-foreground">
                             {displayLabel}
                           </span>
                         </div>
