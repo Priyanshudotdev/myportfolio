@@ -27,13 +27,13 @@ export function PageNavigation({ className }: PageNavigationProps) {
           <Home className="w-4 h-4 text-foreground" />
         </Link>
 
-        {/* <Link
+        <Link
           href="/blogs"
           className="flex items-center justify-center w-8 h-8 rounded-full bg-background hover:bg-background/80 transition-colors cursor-pointer"
           aria-label="Blogs"
         >
           <FileText className="w-4 h-4 text-foreground" />
-        </Link> */}
+        </Link>
 
         <button
           type="button"
