@@ -22,6 +22,13 @@ const Banner = ({ url = "/banner.png", text }: BannerPropsType) => {
           </Link>
           <span className="text-white/40">|</span>
           <Link
+            href="/blogs"
+            className="text-xs font-medium text-white transition-colors hover:text-white/80"
+          >
+            Blogs
+          </Link>
+          <span className="text-white/40">|</span>
+          <Link
             href="/bucket-list"
             className="text-xs font-medium text-white transition-colors hover:text-white/80"
           >
