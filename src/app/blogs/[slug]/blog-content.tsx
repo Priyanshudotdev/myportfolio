@@ -84,9 +84,18 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
                 // Code blocks with language label + copy button
                 pre({ children, ...props }) {
                   const codeEl = (children as React.ReactElement)?.props;
-                  const lang =
-                    codeEl?.className?.replace("language-", "") ?? "code";
+                  const className = codeEl?.className ?? "";
                   const rawText = codeEl?.children ?? "";
+
+                  // Clean up the language string and handle filename
+                  // Expected format in class: "hljs language-typescript:filename.ts"
+                  const cleanLang = className
+                    .replace("hljs", "")
+                    .replace("language-", "")
+                    .trim();
+
+                  const [lang, filename] = cleanLang.split(":");
+                  const displayLabel = filename || lang || "code";
 
                   return (
                     <div className="relative my-8 rounded-2xl border border-muted/50 overflow-hidden">
@@ -98,7 +107,7 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
                             <div className="w-2 h-2 rounded-full bg-emerald-500/20" />
                           </div>
                           <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-                            {lang}
+                            {displayLabel}
                           </span>
                         </div>
                         <CopyButton getText={() => String(rawText)} />

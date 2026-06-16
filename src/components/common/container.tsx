@@ -14,7 +14,7 @@ const Container = ({
 }: ContainerPropsType) => {
   return (
     <div
-      className={`border-l border-r border-l-muted/80 border-r-muted/80 animate-fade-in-blur w-full container mx-auto max-w-[45rem] ${className}`}
+      className={`border-l border-r border-l-muted/80 border-r-muted/80 animate-fade-in-blur w-full container mx-auto max-w-180 ${className}`}
       {...props}
     >
       {children}

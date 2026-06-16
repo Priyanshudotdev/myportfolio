@@ -38,6 +38,34 @@ function useIntention() {
   return { active, trigger };
 }
 ```
+---
+```typescript
+// A simple hook for intentional feedback
+function useIntention() {
+  const [active, setActive] = useState(false);
+  
+  const trigger = () => {
+    setActive(true);
+    setTimeout(() => setActive(false), 300);
+  };
+
+  return { active, trigger };
+}
+```
+---
+```typescript
+// A simple hook for intentional feedback
+function useIntention() {
+  const [active, setActive] = useState(false);
+  
+  const trigger = () => {
+    setActive(true);
+    setTimeout(() => setActive(false), 300);
+  };
+
+  return { active, trigger };
+}
+```
 
 ### Visualizing the Stack
 
