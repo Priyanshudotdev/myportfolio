@@ -1,6 +1,13 @@
 import { ArrowUpRight, File } from "lucide-react";
 import Image from "next/image";
-import { BsGithub, BsLinkedin, BsPinterest, BsTwitterX } from "react-icons/bs";
+import Link from "next/link";
+import {
+  BsGithub,
+  BsLinkedin,
+  BsPinterest,
+  BsTwitterX,
+  BsWhatsapp,
+} from "react-icons/bs";
 import { GoMail } from "react-icons/go";
 import { ModeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
@@ -40,6 +47,7 @@ const socialLinks = [
     previewImage: "/socials/pinterest.png",
   },
   { icon: GoMail, label: "Mail me", href: "mailto:priyanshudotdev@gmail.com" },
+  { icon: BsWhatsapp, label: "Contact me", href: "https://wa.me/919373690752" },
   {
     icon: File,
     label: "Resume",
@@ -77,7 +85,13 @@ const ProfileHeader = () => {
               Priyanshu S. Kayarkar
             </h1>
             <p className="text-sm text-muted-foreground mt-1">
-              20 · builder · design enthusiast · CS grad
+              20 · builder · design enthusiast · CS grad ·{" "}
+              <Link
+                href="/blogs"
+                className="text-foreground hover:underline decoration-primary underline-offset-4 transition-colors"
+              >
+                read my blogs
+              </Link>
             </p>
 
             {/* Mobile Social Links */}

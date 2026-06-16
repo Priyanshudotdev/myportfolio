@@ -1,6 +1,6 @@
 "use client";
 
-import { Home, Undo2 } from "lucide-react";
+import { FileText, Home, Undo2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ModeToggle } from "@/components/theme-toggle";
@@ -26,6 +26,15 @@ export function PageNavigation({ className }: PageNavigationProps) {
         >
           <Home className="w-4 h-4 text-foreground" />
         </Link>
+
+        <Link
+          href="/blogs"
+          className="flex items-center justify-center w-8 h-8 rounded-full bg-background hover:bg-background/80 transition-colors cursor-pointer"
+          aria-label="Blogs"
+        >
+          <FileText className="w-4 h-4 text-foreground" />
+        </Link>
+
         <button
           type="button"
           onClick={() => router.back()}
