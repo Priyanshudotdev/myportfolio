@@ -84,18 +84,19 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
                 // Code blocks with language label + copy button
                 pre({ children, ...props }) {
                   const codeEl = (children as React.ReactElement)?.props;
-                  const className = codeEl?.className ?? "";
+                  const originalClassName = codeEl?.className ?? "";
                   const rawText = codeEl?.children ?? "";
 
-                  // Clean up the language string and handle filename
-                  // Expected format in class: "hljs language-typescript:filename.ts"
-                  const cleanLang = className
-                    .replace("hljs", "")
+                  // Expected format in className: "language-typescript:index.ts"
+                  const cleanLangStr = originalClassName
                     .replace("language-", "")
                     .trim();
 
-                  const [lang, filename] = cleanLang.split(":");
+                  const [lang, filename] = cleanLangStr.split(":");
                   const displayLabel = filename || lang || "code";
+
+                  // Reconstruct a clean class for highlight.js to find
+                  const hljsClass = lang ? `language-${lang}` : "";
 
                   return (
                     <div className="relative my-8 rounded-2xl border border-muted/50 overflow-hidden">
@@ -116,7 +117,10 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
                         {...props}
                         className="!m-0 !p-0 !rounded-none overflow-x-auto"
                       >
-                        {children}
+                        {/* Clone the code element with a cleaned-up className for hljs */}
+                        {React.cloneElement(children as React.ReactElement, {
+                          className: `${codeEl?.className} ${hljsClass} hljs`,
+                        })}
                       </pre>
                     </div>
                   );
