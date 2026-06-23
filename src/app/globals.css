@@ -329,26 +329,32 @@
   z-index: 99999;
 }
 
+/* biome-ignore lint/correctness/noUnknownTypeSelector: Standard API */
 ::view-transition-group(root) {
   animation-duration: 2s;
   z-index: 99999;
 }
 
+/* biome-ignore lint/correctness/noUnknownTypeSelector: Standard API */
 ::view-transition-new(root) {
   mask: var(--transition-gif, url("/reze-dance.gif")) center / 0 no-repeat;
-  -webkit-mask: var(--transition-gif, url("/reze-dance.gif")) center / 0 no-repeat;
+  -webkit-mask:
+    var(--transition-gif, url("/reze-dance.gif")) center / 0 no-repeat;
   animation: scale-mask 2s cubic-bezier(0.87, 0, 0.13, 1) forwards;
 }
 
+/* biome-ignore lint/correctness/noUnknownTypeSelector: Standard API */
 ::view-transition-old(root) {
   animation: none;
   z-index: -1;
 }
 
 /* Layer the banner behind the main transition so the GIF properly hovers over it */
+/* biome-ignore lint/correctness/noUnknownTypeSelector: Standard API */
 ::view-transition-group(profile-banner) {
   z-index: 1;
 }
+/* biome-ignore lint/correctness/noUnknownTypeSelector: Standard API */
 ::view-transition-group(root) {
   z-index: 10;
   animation-duration: 2s;

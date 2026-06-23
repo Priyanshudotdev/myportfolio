@@ -37,9 +37,9 @@ const Banner = ({ url = "/banner.png", text }: BannerPropsType) => {
         </div>
       </div>
 
-      <div 
+      <div
         className="relative h-48 w-full grayscale-50 sm:h-64"
-        style={{ viewTransitionName: 'profile-banner' }}
+        style={{ viewTransitionName: "profile-banner" }}
       >
         <Image
           src={url}

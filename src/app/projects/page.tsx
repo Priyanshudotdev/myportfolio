@@ -65,7 +65,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
       className="group cursor-pointer rounded-xl border border-muted bg-muted/20 p-4 transition-opacity duration-200 hover:opacity-75"
     >
       {/* Thumbnail */}
-      <div 
+      <div
         className="relative mb-4 aspect-video overflow-hidden rounded-lg border border-muted"
         style={{ viewTransitionName: `project-image-${project.id}` }}
       >

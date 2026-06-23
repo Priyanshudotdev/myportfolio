@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 // the easiest way to achieve this is to split your long GIF into 3-4 shorter GIFs.
 // Add the paths to your split GIFs here. The code will pick one randomly on every click!
 const MASK_PRESETS = [
-  "/reze-dance.gif",     // Your current GIF
+  "/reze-dance.gif", // Your current GIF
   // "/reze-dance-2.gif", // Create this starting from timestamp 2
   // "/reze-dance-3.gif", // Create this starting from timestamp 3
   // "/reze-dance-4.gif", // Create this starting from timestamp 4
@@ -25,18 +25,22 @@ export function ModeToggle() {
 
   const handleThemeToggle = () => {
     const newTheme = theme === "light" ? "dark" : "light";
-    
+
     if (!document.startViewTransition) {
       setTheme(newTheme);
       return;
     }
 
-    const randomPreset = MASK_PRESETS[Math.floor(Math.random() * MASK_PRESETS.length)];
-    const timestamp = new Date().getTime();
+    const randomPreset =
+      MASK_PRESETS[Math.floor(Math.random() * MASK_PRESETS.length)];
+    const timestamp = Date.now();
 
-    document.documentElement.style.setProperty("--transition-gif", `url("${randomPreset}?v=${timestamp}")`);
+    document.documentElement.style.setProperty(
+      "--transition-gif",
+      `url("${randomPreset}?v=${timestamp}")`,
+    );
 
-    const transition = document.startViewTransition(() => {
+    const _transition = document.startViewTransition(() => {
       setTheme(newTheme);
     });
   };

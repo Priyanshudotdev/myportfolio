@@ -95,9 +95,9 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
             )}
 
             {blog.coverImage && (
-              <div 
+              <div
                 className="relative aspect-video w-full overflow-hidden rounded-2xl border border-muted"
-                style={{ viewTransitionName: 'blog-cover-image' }}
+                style={{ viewTransitionName: "blog-cover-image" }}
               >
                 <Image
                   src={blog.coverImage}
@@ -121,7 +121,8 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
               ]}
               components={{
                 a: ({ node, href, ...props }) => {
-                  const isInternal = href?.startsWith("#") || href?.startsWith("/");
+                  const isInternal =
+                    href?.startsWith("#") || href?.startsWith("/");
                   return (
                     <a
                       href={href}
