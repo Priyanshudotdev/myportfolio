@@ -47,7 +47,7 @@ const socialLinks = [
     previewImage: "/socials/pinterest.png",
   },
   { icon: GoMail, label: "Mail me", href: "mailto:priyanshudotdev@gmail.com" },
-  { icon: BsWhatsapp, label: "Contact me", href: "https://wa.me/919373690752" },
+  // { icon: BsWhatsapp, label: "Contact me", href: "https://wa.me/919373690752" },
   {
     icon: File,
     label: "Resume",
@@ -70,7 +70,7 @@ const ProfileHeader = () => {
         <div className="relative -mt-14 mb-3 w-fit">
           <Image
             // src="https://i.pinimg.com/736x/8a/27/6c/8a276c8e59a21fc66f433ee19c167b0b.jpg"
-            src="https://i.pinimg.com/1200x/30/56/46/305646250f1a6dd7411a0f72aa61e2ae.jpg"
+            src="/profile.jpg"
             alt="profile"
             width={112}
             height={112}
@@ -85,13 +85,13 @@ const ProfileHeader = () => {
               Priyanshu S. Kayarkar
             </h1>
             <p className="text-sm text-muted-foreground mt-1">
-              20 · builder · design enthusiast · CS grad ·{" "}
-              <Link
+              20 · Builder · Designer{" "}
+              {/* <Link
                 href="/blogs"
                 className="text-foreground hover:underline decoration-primary underline-offset-4 transition-colors"
               >
                 read my blogs
-              </Link>
+              </Link> */}
             </p>
 
             {/* Mobile Social Links */}

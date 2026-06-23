@@ -5,6 +5,7 @@ export type BlogPost = {
   content: string;
   date: string;
   coverImage: string;
+  tags?: string[];
   author: {
     name: string;
     avatar: string;

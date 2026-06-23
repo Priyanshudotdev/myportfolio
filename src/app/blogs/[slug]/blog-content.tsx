@@ -1,12 +1,13 @@
 "use client";
 
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Share2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
+import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import Container from "@/components/common/container";
 import Divider from "@/components/common/divider";
@@ -33,6 +34,24 @@ function CopyButton({ getText }: { getText: () => string }) {
   );
 }
 
+function ShareButton() {
+  const [copied, setCopied] = useState(false);
+  return (
+    <button
+      type="button"
+      onClick={() => {
+        navigator.clipboard.writeText(window.location.href);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }}
+      className="flex items-center gap-1.5 rounded-full border border-muted/50 bg-muted/20 px-3 py-1 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted/50 hover:text-foreground cursor-pointer ml-auto"
+    >
+      <Share2 className="h-3.5 w-3.5" />
+      {copied ? "Copied Link!" : "Share"}
+    </button>
+  );
+}
+
 export default function BlogContent({ blog }: { blog: BlogPost }) {
   return (
     <main className="relative min-h-screen w-full">
@@ -55,11 +74,25 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
                 />
                 <span>{blog.author.name}</span>
               </div>
+              <ShareButton />
             </div>
 
-            <h1 className="font-serif text-5xl italic leading-tight text-foreground md:text-6xl mb-12">
+            <h1 className="font-serif text-4xl italic leading-tight text-foreground md:text-5xl mb-6">
               {blog.title}
             </h1>
+
+            {blog.tags && blog.tags.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-12">
+                {blog.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground border border-muted"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
 
             {blog.coverImage && (
               <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-muted">
@@ -78,13 +111,37 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
           <div className="blog-content">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
-              rehypePlugins={[[rehypeHighlight, { detect: true }], rehypeRaw]}
+              rehypePlugins={[
+                rehypeSlug,
+                [rehypeHighlight, { detect: true }],
+                rehypeRaw,
+              ]}
               components={{
                 // Code blocks with language label + copy button
                 pre({ children, ...props }) {
-                  const codeEl = (children as React.ReactElement)?.props;
+                  const codeEl = (children as React.ReactElement<any>)?.props;
                   const originalClassName = codeEl?.className ?? "";
-                  const rawText = codeEl?.children ?? "";
+
+                  const extractText = (element: React.ReactNode): string => {
+                    if (
+                      typeof element === "string" ||
+                      typeof element === "number"
+                    ) {
+                      return String(element);
+                    }
+                    if (Array.isArray(element)) {
+                      return element.map(extractText).join("");
+                    }
+                    if (React.isValidElement(element)) {
+                      return extractText(
+                        (element.props as { children?: React.ReactNode })
+                          .children,
+                      );
+                    }
+                    return "";
+                  };
+
+                  const rawText = extractText(codeEl?.children);
 
                   // Expected format in className: "language-typescript:index.ts"
                   const cleanLangStr = originalClassName
@@ -138,7 +195,7 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
                   }
                   return (
                     <code
-                      className="font-mono text-[0.9em] bg-muted/50 border border-muted/30 rounded px-1.5 py-0.5 text-foreground/90"
+                      className="font-mono text-[0.9em] bg-muted dark:bg-muted/50 border border-muted-foreground/20 rounded px-1.5 py-0.5 text-foreground font-semibold"
                       {...props}
                     >
                       {children}

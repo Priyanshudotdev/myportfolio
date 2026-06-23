@@ -38,7 +38,14 @@ const Banner = ({ url = "/banner.png", text }: BannerPropsType) => {
       </div>
 
       <div className="relative h-48 w-full grayscale-50 sm:h-64">
-        <Image src={url} alt="Banner" fill className="object-cover" />
+        <Image
+          src={url}
+          alt="Banner"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
         <p className="absolute inset-0 flex items-center justify-center font-serif text-xl italic text-white drop-shadow">
           {text}
         </p>
