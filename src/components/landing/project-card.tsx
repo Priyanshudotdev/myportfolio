@@ -35,6 +35,7 @@ const Card = ({ project }: { project: ProjectItem }) => {
           src={project.image}
           alt={project.name || "Project image"}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className={cn(
             "object-cover transition-opacity duration-500",
             isHovered ? "opacity-0" : "opacity-100",
@@ -117,6 +118,7 @@ const Card = ({ project }: { project: ProjectItem }) => {
 };
 
 const ProjectCard = ({ projects }: { projects: ProjectItem[] }) => {
+  const router = useRouter();
   const displayedProjects = projects.slice(0, 4);
 
   return (
@@ -130,7 +132,7 @@ const ProjectCard = ({ projects }: { projects: ProjectItem[] }) => {
 
       {projects.length > 4 && (
         <GradientButton
-          onClick={() => window.open("/work", "_self")}
+          onClick={() => router.push("/work")}
           className="px-4 flex items-center gap-x-2 py-2 text-sm"
         >
           View All <ChevronRight className="size-4" />

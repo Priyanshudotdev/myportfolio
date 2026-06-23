@@ -3,7 +3,7 @@
 import { Undo2 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ModeToggle } from "@/components/theme-toggle";
 
 interface Heading {
@@ -22,6 +22,18 @@ export function FloatingBlogNav({ title }: FloatingBlogNavProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>("");
+
+  const navRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setIsExpanded(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   useEffect(() => {
     // Extract headings from the document
@@ -74,17 +86,20 @@ export function FloatingBlogNav({ title }: FloatingBlogNavProps) {
     headings.find((h) => h.id === activeId)?.text || title;
 
   return (
-    <div className="fixed bottom-8 left-1/2 z-50 -translate-x-1/2 px-4 w-full max-w-lg">
+    <div
+      ref={navRef}
+      className="fixed bottom-8 left-1/2 z-50 -translate-x-1/2 px-4 w-full max-w-lg"
+    >
       <AnimatePresence>
         {isExpanded && (
           <motion.div
             initial={{ opacity: 0, y: 10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            className="mb-3 overflow-hidden rounded-3xl border border-muted/50 bg-background/95 p-2 shadow-2xl backdrop-blur-xl dark:bg-muted/30"
+            className="mb-3 overflow-hidden rounded-3xl border border-muted/50 bg-background/95 p-2 shadow-2xl backdrop-blur-sm dark:bg-muted/95"
           >
             <div className="px-4 py-3">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
                 Table of Contents
               </span>
             </div>
@@ -97,7 +112,7 @@ export function FloatingBlogNav({ title }: FloatingBlogNavProps) {
                   className={`flex cursor-pointer items-center justify-between rounded-xl px-4 py-3 text-left text-sm transition-colors ${
                     activeId === heading.id
                       ? "bg-foreground text-background"
-                      : "text-muted-foreground hover:bg-muted/50"
+                      : "text-primary hover:bg-muted/50"
                   }`}
                 >
                   <span className="font-medium truncate">{heading.text}</span>
@@ -111,7 +126,7 @@ export function FloatingBlogNav({ title }: FloatingBlogNavProps) {
         )}
       </AnimatePresence>
 
-      <nav className="flex items-center gap-2 rounded-full border border-muted/50 bg-background/80 p-1.5 shadow-xl backdrop-blur-md dark:bg-muted/20">
+      <nav className="flex items-center gap-2 rounded-full border border-muted/50 bg-background/80 p-1.5 shadow-xl backdrop-blur-sm dark:bg-muted/80">
         <button
           type="button"
           onClick={() =>
@@ -158,9 +173,9 @@ export function FloatingBlogNav({ title }: FloatingBlogNavProps) {
           <ModeToggle />
           <button
             type="button"
-            onClick={() => router.back()}
+            onClick={() => router.push("/blogs")}
             className="flex h-8 w-8 items-center justify-center rounded-full bg-background border border-muted/50 transition-colors hover:bg-muted/20"
-            aria-label="Go back"
+            aria-label="Go back to blogs"
           >
             <Undo2 className="h-4 w-4" />
           </button>

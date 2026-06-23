@@ -3,6 +3,7 @@
 import Container from "@/components/common/container";
 import Divider from "@/components/common/divider";
 import Footer from "@/components/common/footer";
+import BlogsSection from "@/components/landing/blogs-section";
 import ExperienceSection from "@/components/landing/experience-section";
 import GithubContributionCard from "@/components/landing/github-card";
 import MyPlayground from "@/components/landing/my-playground";
@@ -17,6 +18,8 @@ export default function Home() {
         <ProfileSection />
         <Divider />
         <ExperienceSection />
+        <Divider />
+        <BlogsSection />
         <Divider />
         <ProofOfWork />
         <Divider />

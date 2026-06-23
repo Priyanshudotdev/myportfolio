@@ -9,6 +9,7 @@ export type BlogPost = {
   content: string;
   date: string;
   coverImage: string;
+  tags?: string[];
   author: {
     name: string;
     avatar: string;
@@ -38,6 +39,7 @@ export async function getAllBlogs(): Promise<BlogPost[]> {
         excerpt: data.excerpt,
         date: data.date,
         coverImage: data.coverImage,
+        tags: data.tags || [],
         author: {
           name: data.authorName,
           avatar: data.authorAvatar,
@@ -64,6 +66,7 @@ export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
       excerpt: data.excerpt,
       date: data.date,
       coverImage: data.coverImage,
+      tags: data.tags || [],
       author: {
         name: data.authorName,
         avatar: data.authorAvatar,

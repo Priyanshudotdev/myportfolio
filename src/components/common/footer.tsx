@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { VisitorCounter } from "./visitor-counter";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -188,10 +189,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Priyanshu S. Kayarkar. All rights
             reserved.
           </p>
-          {/* <p className="text-sm text-muted-foreground">
-            You&apos;re the <span className="text-foreground font-medium">33,983</span>
-            <sup className="text-xs">th</sup> visitor
-          </p> */}
+          <VisitorCounter />
         </div>
       </div>
     </footer>

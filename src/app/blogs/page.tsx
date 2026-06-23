@@ -1,35 +1,9 @@
-import { ChevronRight } from "lucide-react";
-import Link from "next/link";
 import Container from "@/components/common/container";
 import Divider from "@/components/common/divider";
 import Footer from "@/components/common/footer";
 import { PageNavigation } from "@/components/common/page-navigation";
-import type { BlogPost } from "@/lib/blogs-data";
 import { getAllBlogs } from "@/lib/blogs-server";
-
-const BlogListCard = ({ blog }: { blog: BlogPost }) => {
-  return (
-    <Link
-      href={`/blogs/${blog.slug}`}
-      className="group block py-8 transition-opacity hover:opacity-70"
-    >
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-3 text-sm text-muted-foreground">
-          <span>{blog.date}</span>
-          <span>•</span>
-          <span>{blog.author.name}</span>
-        </div>
-        <h2 className="font-serif text-3xl italic text-foreground md:text-4xl">
-          {blog.title}
-        </h2>
-        <p className="line-clamp-2 text-muted-foreground">{blog.excerpt}</p>
-        <div className="mt-2 flex items-center gap-1 text-sm font-medium text-primary">
-          Read article <ChevronRight className="h-4 w-4" />
-        </div>
-      </div>
-    </Link>
-  );
-};
+import { BlogListCard } from "./blog-list-card";
 
 export default async function BlogsPage() {
   const blogs = await getAllBlogs();

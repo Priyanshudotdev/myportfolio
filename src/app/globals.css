@@ -200,6 +200,7 @@
     view-transition-name: root;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    scroll-behavior: smooth;
   }
   html::-webkit-scrollbar {
     display: none;
@@ -238,15 +239,15 @@
 }
 
 .blog-content h2 {
-  @apply font-serif text-3xl italic mt-16 mb-6 text-foreground tracking-tight;
+  @apply font-serif text-3xl italic mt-16 mb-6 text-foreground tracking-tight scroll-mt-24;
 }
 
 .blog-content h3 {
-  @apply font-serif text-2xl italic mt-12 mb-4 text-foreground/90;
+  @apply font-serif text-2xl italic mt-12 mb-4 text-foreground/90 scroll-mt-24;
 }
 
 .blog-content h4 {
-  @apply font-sans font-bold text-lg mt-8 mb-3 text-foreground/80 uppercase tracking-widest;
+  @apply font-sans font-bold text-lg mt-8 mb-3 text-foreground/80 uppercase tracking-widest scroll-mt-24;
 }
 
 .blog-content p {
