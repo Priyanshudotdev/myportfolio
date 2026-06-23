@@ -2,7 +2,7 @@
 title: "Understanding Claude Code by Building It (in ~200 Lines of Code) Part-1"
 excerpt: "Engineering is more than just code; it's a medium for expression. Let's dissect what makes a digital product feel alive."
 date: "June 18, 2026"
-coverImage: "/blogs/blog1.png"
+coverImage: "https://ycbvuadlnh.ufs.sh/f/63qZlk9GgiIr11TBe1ExPHofvhT3rWReELOdSV8w5bkmjJDZ"
 authorName: "Priyanshu Kayarkar"
 authorAvatar: "/profile.jpg"
 tags : ["AI", "LLM", "Coding Agent", "Typescript"]
