@@ -117,6 +117,17 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
                 rehypeRaw,
               ]}
               components={{
+                a: ({ node, href, ...props }) => {
+                  const isInternal = href?.startsWith("#") || href?.startsWith("/");
+                  return (
+                    <a
+                      href={href}
+                      target={isInternal ? undefined : "_blank"}
+                      rel={isInternal ? undefined : "noopener noreferrer"}
+                      {...props}
+                    />
+                  );
+                },
                 video: ({ src, style, node, ...props }) => (
                   <video
                     src={src}
