@@ -1,7 +1,6 @@
 ---
 title: "Understanding Claude Code by Building It (in ~200 Lines of Code) Part-1"
-excerpt: "Engineering is more than just code; it's a medium for expression. Let's dissect what makes a digital product feel alive."
-date: "June 18, 2026"
+date: "June 23, 2026"
 coverImage: "https://ycbvuadlnh.ufs.sh/f/63qZlk9GgiIr11TBe1ExPHofvhT3rWReELOdSV8w5bkmjJDZ"
 authorName: "Priyanshu Kayarkar"
 authorAvatar: "/profile.jpg"
@@ -14,7 +13,7 @@ We have all used Claude Code, Gemini CLI (now called Antigravity CLI), and other
 
 The best way to understand anything is **to build it**, so I started learning how AI agents work and began building a simpler version of complex AI agents like Claude Code.
 
-In this blog, we will build a simple AI agent that can access our filesystem and perform operations on it.
+In this blog, we will build a simple AI agent [**ZenCode**](https://github.com/Priyanshudotdev/zencode) that can access our filesystem and perform operations on it.
 
 ## AI Jargon : Key Concepts
 
@@ -85,8 +84,8 @@ So let's jump into VS Code and start building.
 
 ### Packages We Are Going to Use
 
-- **Bun** - A JavaScript runtime. You can use Node.js or Deno as well, but I recommend Bun because it provides many useful things out of the box.
-- **Gemini AI** - We will use Gemini as our LLM provider because it's free and gets the job done. You can easily swap this for any other provider.
+- [**Bun**](https://bun.com/) - A JavaScript runtime. You can use Node.js or Deno as well, but I recommend Bun because it provides many useful things out of the box.
+- [**Gemini AI**](https://aistudio.google.com/) - We will use Gemini as our LLM provider because it's free and gets the job done. You can easily swap this for any other provider.
 
 Initialize the project:
 
@@ -299,7 +298,7 @@ async function runCodingAssistant(userMessage: string) {
     try {
         while (true) {
             const response = await ai.models.generateContent({
-                model: "gemini-2.5-flash",
+                model: "gemini-3.1-flash-lite",
                 contents,
                 config: {
                     systemInstruction: SYSTEM_PROMPT,
@@ -380,15 +379,16 @@ bun index.ts
 
 **Output:**
 
-```
-Tool Called: write_files
-{
-  path: '/data/two_sum.py',
-  action: 'edited'
-}
-Successfully created two_sum.py with an optimized solution for the LeetCode Two Sum problem.
-```
-
+<video 
+  src="https://ycbvuadlnh.ufs.sh/f/63qZlk9GgiIrK6Kgj4whBxNwp9TDQRzSHj3sL7t5C0MkeZvb"
+ controls={false}
+  autoPlay
+  muted
+  loop
+  playsInline
+  width="100%"
+  style="border-radius: 8px; margin-top: 8px;">
+</video>
 
 ## Conclusion
 
@@ -400,7 +400,7 @@ In the **next part**, we will continue improving it and make it more practical.
 
 ## Try It Yourself
 
-The [full source](https://github.com/Priyanshudotdev) is around 200 lines of code. 
-Feel free to swap out the LLM provider, tweak the system prompt, or add more tools on your own!
+The [**full source**](https://github.com/Priyanshudotdev/zencode) is around 200 lines of code. 
+Feel free to swap out any language of your choice, LLM provider, or system prompt and add more tools on your own!
 
 **Thank You 🤍**
