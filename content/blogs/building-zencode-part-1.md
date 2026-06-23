@@ -1,5 +1,6 @@
 ---
 title: "Understanding Claude Code by Building It (in ~200 Lines of Code) Part-1"
+excerpt: "We've all used Claude Code and Gemini CLI but how do they actually work? Let's find out by building one from scratch in ~200 lines"
 date: "June 23, 2026"
 coverImage: "https://ycbvuadlnh.ufs.sh/f/63qZlk9GgiIr11TBe1ExPHofvhT3rWReELOdSV8w5bkmjJDZ"
 authorName: "Priyanshu Kayarkar"
