@@ -169,12 +169,19 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
                         </div>
                         <CopyButton getText={() => String(rawText)} />
                       </div>
+                      {/* <pre
+                        {...props}
+                        className="!m-0 !p-0 !rounded-none overflow-x-auto"
+                      >
+                        {React.cloneElement(children as React.ReactElement<{ className?: string }>, {
+                          className: `${codeEl?.className} ${hljsClass}`,
+                        })}
+                      </pre> */}
                       <pre
                         {...props}
                         className="!m-0 !p-0 !rounded-none overflow-x-auto"
                       >
-                        {/* Clone the code element with a cleaned-up className for hljs */}
-                        {React.cloneElement(children as React.ReactElement, {
+                        {React.cloneElement(children as React.ReactElement<any>, {
                           className: `${codeEl?.className} ${hljsClass} hljs`,
                         })}
                       </pre>
