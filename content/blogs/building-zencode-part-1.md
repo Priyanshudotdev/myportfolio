@@ -13,7 +13,7 @@ We have all used Claude Code, Gemini CLI (now called Antigravity CLI), and other
 
 The best way to understand anything is **to build it**, so I started learning how AI agents work and began building a simpler version of complex AI agents like Claude Code.
 
-In this blog, we will build a simple AI agent [**ZenCode**](https://github.com/Priyanshudotdev/zencode) that can access our filesystem and perform operations on it.
+In this blog, we will build a simple AI agent [**ZenCode**](https://github.com/Priyanshudotdev/zencode). It can access our filesystem and perform operations on it (for this part of series).
 
 ## AI Jargon : Key Concepts
 
@@ -358,10 +358,7 @@ async function runCodingAssistant(userMessage: string) {
 
 When we execute a tool, we must send the result back to the LLM. Without this step, the model can call a tool but can never actually see its output. By pushing the `functionResponse` back into the `contents` array, the LLM can analyze the tool output and decide its next move.
 
-```
-User → LLM → list_files() → Tool Result → LLM → read_files() → Tool Result → LLM → write_files() → Final Answer
-```
-
+![LLM Request Response Cycle](/req-res-llm.png)
 
 ## Testing It Out
 
