@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import OnekoCat from "@/components/common/oneko-car";
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon.jpg", type: "image/jpeg" },
+      { url: "/favicon.jpg", type: "image/jpg" },
     ],
     shortcut: "/favicon.ico",
     apple: "/favicon.jpg",
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     siteName: "Priyanshu Kayarkar",
     images: [
       {
-        url: "https://priyanshuu.tech/banner.png",
+        url: "https://priyanshuu.tech/profile.jpg",
         width: 1200,
         height: 630,
         alt: "Priyanshu Kayarkar - Fullstack Developer",
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Priyanshu Kayarkar | Developer",
     description: "Fullstack Developer building modern web applications",
-    images: ["https://priyanshuu.tech/banner.png"],
+    images: ["https://priyanshuu.tech/profile.jpg"],
   },
 };
 
@@ -86,6 +87,9 @@ export default function RootLayout({
           <SpeedInsights />
           <OnekoCat />
         </ThemeProvider>
+        <GoogleAnalytics
+          gaId={process.env.NEXT_PUBLIC_GA_ID || "G-4VJ5H8XY1Y"}
+        />
       </body>
     </html>
   );

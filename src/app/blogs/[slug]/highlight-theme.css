@@ -1,0 +1,42 @@
+.hljs {
+  background: #0d1117;
+  color: #f8f8f2;
+  padding: 1.25rem;
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+
+.hljs-keyword,
+.hljs-operator {
+  color: #ff79c6;
+}
+
+.hljs-function,
+.hljs-title {
+  color: #50fa7b;
+}
+
+.hljs-string,
+.hljs-attr {
+  color: #f1fa8c;
+}
+
+.hljs-comment {
+  color: #6272a4;
+  font-style: italic;
+}
+
+.hljs-type,
+.hljs-built_in {
+  color: #8be9fd;
+}
+
+.hljs-number,
+.hljs-literal {
+  color: #bd93f9;
+}
+
+.hljs-variable,
+.hljs-params {
+  color: #ffb86c;
+}
