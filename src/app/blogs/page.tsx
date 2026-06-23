@@ -1,9 +1,28 @@
+import type { Metadata } from "next";
 import Container from "@/components/common/container";
 import Divider from "@/components/common/divider";
 import Footer from "@/components/common/footer";
 import { PageNavigation } from "@/components/common/page-navigation";
 import { getAllBlogs } from "@/lib/blogs-server";
 import { BlogListCard } from "./blog-list-card";
+
+export const metadata: Metadata = {
+  title: "Blogs | Priyanshu Kayarkar",
+  description: "Thoughts on design, engineering, and everything in between.",
+  openGraph: {
+    title: "Blogs | Priyanshu Kayarkar",
+    description: "Thoughts on design, engineering, and everything in between.",
+    url: "https://priyanshuu.tech/blogs",
+    images: [
+      {
+        url: "https://priyanshuu.tech/profile.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Blogs | Priyanshu Kayarkar",
+      },
+    ],
+  },
+};
 
 export default async function BlogsPage() {
   const blogs = await getAllBlogs();
