@@ -119,7 +119,10 @@ export default function ProjectPage() {
           </div>
 
           {/* Media: image shown instantly, video fades in once ready */}
-          <div className="relative w-full aspect-video mb-8 rounded-xl overflow-hidden border border-muted bg-muted/30">
+          <div 
+            className="relative w-full aspect-video mb-8 rounded-xl overflow-hidden border border-muted bg-muted/30"
+            style={{ viewTransitionName: `project-image-${project.id}` }}
+          >
             {/* Thumbnail — always rendered, fades out when video is ready */}
             <Image
               src={project.image}

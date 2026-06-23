@@ -86,7 +86,10 @@ export function BlogListCard({ blog }: { blog: BlogPost }) {
               height: "140px",
             }}
           >
-            <div className="relative h-full w-full overflow-hidden rounded-2xl shadow-2xl ring-2 ring-muted/50">
+            <div 
+              className="relative h-full w-full overflow-hidden rounded-2xl shadow-2xl ring-2 ring-muted/50"
+              style={{ viewTransitionName: `blog-image-${blog.id}` }}
+            >
               <Image
                 src={blog.coverImage}
                 alt={blog.title}

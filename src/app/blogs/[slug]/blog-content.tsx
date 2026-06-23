@@ -95,7 +95,10 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
             )}
 
             {blog.coverImage && (
-              <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-muted">
+              <div 
+                className="relative aspect-video w-full overflow-hidden rounded-2xl border border-muted"
+                style={{ viewTransitionName: 'blog-cover-image' }}
+              >
                 <Image
                   src={blog.coverImage}
                   alt={blog.title}

@@ -9,8 +9,37 @@ import {
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
+// PRESET MASKS CONFIGURATION
+// Since GIFs cannot be fast-forwarded or started at a specific timestamp via code,
+// the easiest way to achieve this is to split your long GIF into 3-4 shorter GIFs.
+// Add the paths to your split GIFs here. The code will pick one randomly on every click!
+const MASK_PRESETS = [
+  "/reze-dance.gif",     // Your current GIF
+  // "/reze-dance-2.gif", // Create this starting from timestamp 2
+  // "/reze-dance-3.gif", // Create this starting from timestamp 3
+  // "/reze-dance-4.gif", // Create this starting from timestamp 4
+];
+
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();
+
+  const handleThemeToggle = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    
+    if (!document.startViewTransition) {
+      setTheme(newTheme);
+      return;
+    }
+
+    const randomPreset = MASK_PRESETS[Math.floor(Math.random() * MASK_PRESETS.length)];
+    const timestamp = new Date().getTime();
+
+    document.documentElement.style.setProperty("--transition-gif", `url("${randomPreset}?v=${timestamp}")`);
+
+    const transition = document.startViewTransition(() => {
+      setTheme(newTheme);
+    });
+  };
 
   const buttonContent =
     theme === "light" ? (
@@ -40,7 +69,7 @@ export function ModeToggle() {
           "active:scale-95",
           "opacity-60 p-2 text-xs rounded-full ml-4",
         )}
-        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+        onClick={handleThemeToggle}
       >
         {buttonContent}
       </button>
@@ -59,7 +88,7 @@ export function ModeToggle() {
               "active:scale-95",
               "opacity-60 p-2 text-xs rounded-full ml-4",
             )}
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            onClick={handleThemeToggle}
           >
             {buttonContent}
           </TooltipTrigger>
