@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, ArrowRight, Share2 } from "lucide-react";
+import { ArrowLeft, Share2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -117,9 +117,23 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
                 rehypeRaw,
               ]}
               components={{
+                video: ({ src, style, node, ...props }) => (
+                  <video
+                    src={src}
+                    controls
+                    width="100%"
+                    style={{ borderRadius: "8px", marginTop: "8px" }}
+                    {...props}
+                  />
+                ),
                 // Code blocks with language label + copy button
                 pre({ children, ...props }) {
-                  const codeEl = (children as React.ReactElement<any>)?.props;
+                  const codeEl = (
+                    children as React.ReactElement<{
+                      className?: string;
+                      children?: React.ReactNode;
+                    }>
+                  )?.props;
                   const originalClassName = codeEl?.className ?? "";
 
                   const extractText = (element: React.ReactNode): string => {
@@ -146,9 +160,11 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
                   // Expected format in className: "language-typescript:index.ts"
                   const cleanLangStr = originalClassName
                     .replace("language-", "")
+                    .replace("hljs", "")
                     .trim();
 
-                  const [lang, filename] = cleanLangStr.split(":");
+                  const [rawLang, filename] = cleanLangStr.split(":");
+                  const lang = rawLang?.split(" ")[0]?.trim() || "";
                   const displayLabel = filename || lang || "code";
 
                   // Reconstruct a clean class for highlight.js to find
@@ -169,21 +185,18 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
                         </div>
                         <CopyButton getText={() => String(rawText)} />
                       </div>
-                      {/* <pre
-                        {...props}
-                        className="!m-0 !p-0 !rounded-none overflow-x-auto"
-                      >
-                        {React.cloneElement(children as React.ReactElement<{ className?: string }>, {
-                          className: `${codeEl?.className} ${hljsClass}`,
-                        })}
-                      </pre> */}
                       <pre
                         {...props}
                         className="!m-0 !p-0 !rounded-none overflow-x-auto"
                       >
-                        {React.cloneElement(children as React.ReactElement<any>, {
-                          className: `${codeEl?.className} ${hljsClass} hljs`,
-                        })}
+                        {React.cloneElement(
+                          children as React.ReactElement<{
+                            className?: string;
+                          }>,
+                          {
+                            className: `${codeEl?.className} ${hljsClass} hljs`,
+                          },
+                        )}
                       </pre>
                     </div>
                   );
@@ -227,18 +240,6 @@ export default function BlogContent({ blog }: { blog: BlogPost }) {
                 </div>
                 Read more Blogs
               </Link>
-
-              <a
-                href="https://buymeacoffee.com/priyanshuu"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 font-medium text-foreground transition-opacity hover:opacity-70"
-              >
-                Send a little caffeine love ☕️💖
-                <div className="flex h-10 w-10 items-center justify-center rounded-full border border-muted">
-                  <ArrowRight className="h-4 w-4" />
-                </div>
-              </a>
             </div>
           </div>
         </article>

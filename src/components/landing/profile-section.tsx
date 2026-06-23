@@ -1,13 +1,6 @@
 import { ArrowUpRight, File } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
-import {
-  BsGithub,
-  BsLinkedin,
-  BsPinterest,
-  BsTwitterX,
-  BsWhatsapp,
-} from "react-icons/bs";
+import { BsGithub, BsLinkedin, BsPinterest, BsTwitterX } from "react-icons/bs";
 import { GoMail } from "react-icons/go";
 import { ModeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";

@@ -15,7 +15,7 @@ export function VisitorCounter() {
         } else {
           setCount(0); // If fails, show 0 instead of fake number
         }
-      } catch (err) {
+      } catch (_err) {
         setCount(0); // If fails, show 0 instead of fake number
       }
     };
