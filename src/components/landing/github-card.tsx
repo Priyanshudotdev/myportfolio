@@ -29,23 +29,25 @@ const GithubContributionCard = () => {
       <Heading text="GitHub Contributions ● @Priyanshudotdev" />
 
       <div className="py-8 flex flex-col items-center gap-4">
-        <GitHubCalendar
-          username="Priyanshudotdev"
-          colorScheme={theme === "dark" ? "dark" : "light"}
-          theme={{
-            light: ["#f5f5f5", "#d4d4d4", "#a3a3a3", "#737373", "#404040"],
-            dark: ["#1a1a1a", "#404040", "#737373", "#a6a6a6", "#d9d9d9"],
-          }}
-          blockSize={
-            typeof window !== "undefined" && window.innerWidth < 768 ? 5 : 9
-          }
-          year={2026}
-          className={`hover:scale-[1.01] duration-300 transition ease-in ${
-            typeof window !== "undefined" && window.innerWidth < 768
-              ? "sm:hidden"
-              : ""
-          }`}
-        />
+        <div className="p-4 md:p-6 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 overflow-hidden w-full max-w-fit mx-auto">
+          <GitHubCalendar
+            username="Priyanshudotdev"
+            colorScheme={theme === "dark" ? "dark" : "light"}
+            theme={{
+              light: ["#e5e5e5", "#c4c4c4", "#a3a3a3", "#737373", "#404040"],
+              dark: ["#2a2a2a", "#505050", "#737373", "#a6a6a6", "#d9d9d9"],
+            }}
+            blockSize={
+              typeof window !== "undefined" && window.innerWidth < 768 ? 5 : 9
+            }
+            year={2026}
+            className={`hover:scale-[1.01] duration-300 transition ease-in ${
+              typeof window !== "undefined" && window.innerWidth < 768
+                ? "sm:hidden"
+                : ""
+            }`}
+          />
+        </div>
       </div>
     </Container>
   );
