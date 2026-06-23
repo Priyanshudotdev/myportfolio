@@ -103,7 +103,7 @@ export function FloatingBlogNav({ title }: FloatingBlogNavProps) {
                 Table of Contents
               </span>
             </div>
-            <div className="flex flex-col gap-1 max-h-[40vh] overflow-y-auto">
+            <div className="flex flex-col gap-1 max-h-[40vh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               {headings.map((heading) => (
                 <button
                   key={heading.id}
