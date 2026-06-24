@@ -40,8 +40,14 @@ export function ModeToggle() {
       `url("${randomPreset}?v=${timestamp}")`,
     );
 
+    document.body.classList.add("theme-transitioning");
+
     const _transition = document.startViewTransition(() => {
       setTheme(newTheme);
+    });
+
+    _transition.finished.finally(() => {
+      document.body.classList.remove("theme-transitioning");
     });
   };
 

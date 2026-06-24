@@ -360,6 +360,11 @@
   animation-duration: 2s;
 }
 
+/* Hide the oneko cat during the transition to prevent glitching */
+body.theme-transitioning #oneko {
+  display: none !important;
+}
+
 @keyframes scale-mask {
   0% {
     mask-size: 0;
