@@ -41,6 +41,10 @@ export function ModeToggle() {
     );
 
     document.body.classList.add("theme-transitioning");
+    
+    // Force hide the cat directly via JS to absolutely guarantee it doesn't glitch the snapshot
+    const neko = document.getElementById("oneko");
+    if (neko) neko.style.display = "none";
 
     const _transition = document.startViewTransition(() => {
       setTheme(newTheme);
@@ -48,6 +52,7 @@ export function ModeToggle() {
 
     _transition.finished.finally(() => {
       document.body.classList.remove("theme-transitioning");
+      if (neko) neko.style.display = "block";
     });
   };
 
