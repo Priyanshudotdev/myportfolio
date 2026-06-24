@@ -350,7 +350,6 @@
 }
 
 /* Layer the banner behind the main transition so the GIF properly hovers over it */
-/* biome-ignore lint/correctness/noUnknownTypeSelector: Standard API */
 ::view-transition-group(profile-banner) {
   z-index: 1;
 }
@@ -362,6 +361,7 @@
 
 /* Hide the oneko cat during the transition to prevent glitching */
 body.theme-transitioning #oneko {
+  /* biome-ignore lint/complexity/noImportantStyles: Required to override oneko.js inline styles */
   display: none !important;
 }
 
