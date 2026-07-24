@@ -5,6 +5,9 @@ import Divider from "@/components/common/divider";
 import Footer from "@/components/common/footer";
 import BlogsSection from "@/components/landing/blogs-section";
 import ExperienceSection from "@/components/landing/experience-section";
+import CertificationsSection from "@/components/landing/certifications-section";
+import CourseCertificationsSection from "@/components/landing/course-certifications-section";
+import OpenSourceSection from "@/components/landing/opensource-section";
 import GithubContributionCard from "@/components/landing/github-card";
 import MyPlayground from "@/components/landing/my-playground";
 import ProfileSection from "@/components/landing/profile-section";
@@ -22,6 +25,12 @@ export default function Home() {
         <BlogsSection />
         <Divider />
         <ProofOfWork />
+        <Divider />
+        <OpenSourceSection />
+        <Divider />
+        <CertificationsSection />
+        <Divider />
+        <CourseCertificationsSection />
         <Divider />
         <GithubContributionCard />
         <Divider />

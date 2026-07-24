@@ -5,7 +5,7 @@ import Container from "../common/container";
 import Heading from "../common/Heading";
 
 const GithubContributionCard = () => {
-  const _username = "Priyanshudotdev";
+  const username = "Priyanshudotdev";
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -26,12 +26,18 @@ const GithubContributionCard = () => {
 
   return (
     <Container className="px-8 py-4">
-      <Heading text="GitHub Contributions ● @Priyanshudotdev" />
-
+      <a
+        href={`https://github.com/${username}`}
+        target="_blank"
+        rel="noreferrer noopener"
+        className="inline-block"
+      >
+        <Heading text={`GitHub Contributions ● @${username}`} />
+      </a>
       <div className="py-8 flex flex-col items-center gap-4">
         <div className="p-4 md:p-6 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 overflow-hidden w-full max-w-fit mx-auto">
           <GitHubCalendar
-            username="Priyanshudotdev"
+            username={username}
             colorScheme={theme === "dark" ? "dark" : "light"}
             theme={{
               light: ["#e5e5e5", "#c4c4c4", "#a3a3a3", "#737373", "#404040"],

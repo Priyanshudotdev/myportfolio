@@ -25,8 +25,8 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Priyanshu Kayarkar | Developer",
-  description: "Fullstack Developer building modern web applications",
+  title: "Priyanshu Kayarkar | Full-Stack Developer",
+  description: "I build high-performance web applications with a focus on deep engineering and obsession over design details.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
     apple: "/favicon.jpg",
   },
   openGraph: {
-    title: "Priyanshu Kayarkar | Developer",
-    description: "Fullstack Developer building modern web applications",
+    title: "Priyanshu Kayarkar | Full-Stack Developer",
+    description: "I build high-performance web applications with a focus on deep engineering and obsession over design details.",
     url: "https://priyanshuu.tech",
     siteName: "Priyanshu Kayarkar",
     images: [
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
         url: "https://priyanshuu.tech/profile.jpg",
         width: 1200,
         height: 630,
-        alt: "Priyanshu Kayarkar - Fullstack Developer",
+        alt: "Priyanshu Kayarkar - Full-Stack Developer",
       },
     ],
     locale: "en_US",
@@ -53,8 +53,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Priyanshu Kayarkar | Developer",
-    description: "Fullstack Developer building modern web applications",
+    title: "Priyanshu Kayarkar | Full-Stack Developer",
+    description: "I build high-performance web applications with a focus on deep engineering and obsession over design details.",
     images: ["https://priyanshuu.tech/profile.jpg"],
   },
 };

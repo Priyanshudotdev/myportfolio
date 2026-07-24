@@ -9,11 +9,13 @@
 
   const nekoEl = document.createElement("div");
 
-  let nekoPosX = 32;
-  let nekoPosY = 32;
+  let nekoPosX = window.innerWidth - 48;
+  let nekoPosY = window.innerHeight - 48;
 
-  let mousePosX = 0;
-  let mousePosY = 0;
+  let mousePosX = window.innerWidth - 48;
+  let mousePosY = window.innerHeight - 48;
+
+  let isTrapped = true;
 
   let frameCount = 0;
   let idleTime = 0;
@@ -90,7 +92,64 @@
     nekoEl.style.width = "32px";
     nekoEl.style.height = "32px";
     nekoEl.style.position = "fixed";
-    nekoEl.style.pointerEvents = "none";
+    const tooltipEl = document.createElement("div");
+    tooltipEl.style.position = "fixed";
+    tooltipEl.style.backgroundColor = "hsl(var(--background))";
+    tooltipEl.style.color = "hsl(var(--muted-foreground))";
+    tooltipEl.style.border = "1px solid hsl(var(--border))";
+    tooltipEl.style.padding = "6px 12px";
+    tooltipEl.style.borderRadius = "6px";
+    tooltipEl.style.fontSize = "12px";
+    tooltipEl.style.pointerEvents = "none";
+    tooltipEl.style.opacity = "0";
+    tooltipEl.style.transition = "opacity 0.2s ease-in-out";
+    tooltipEl.style.zIndex = "2147483647";
+    tooltipEl.style.boxShadow = "0 4px 6px -1px rgb(0 0 0 / 0.1)";
+    tooltipEl.style.fontFamily = "inherit";
+    tooltipEl.style.whiteSpace = "nowrap";
+    tooltipEl.style.transform = "translateX(-50%)"; // Center horizontally relative to left position
+    document.body.appendChild(tooltipEl);
+
+    nekoEl.style.pointerEvents = "auto";
+    nekoEl.style.cursor = "pointer";
+    
+    const updateTooltipText = () => {
+      tooltipEl.innerText = isTrapped ? "Click to wake me up! I will disturb you." : "Click to put me to sleep!";
+    };
+
+    nekoEl.addEventListener("mouseenter", () => {
+      updateTooltipText();
+      tooltipEl.style.opacity = "1";
+    });
+
+    nekoEl.addEventListener("mouseleave", () => {
+      tooltipEl.style.opacity = "0";
+    });
+
+    nekoEl.addEventListener("click", () => {
+      isTrapped = !isTrapped;
+      updateTooltipText();
+    });
+
+    // Make sure tooltip follows cat and stays on screen
+    setInterval(() => {
+      if (tooltipEl.style.opacity === "1") {
+        let tooltipX = nekoPosX;
+        const tooltipWidth = tooltipEl.offsetWidth || 220; // Fallback width if not rendered yet
+        
+        // Keep within right edge
+        if (tooltipX + (tooltipWidth / 2) > window.innerWidth - 10) {
+          tooltipX = window.innerWidth - (tooltipWidth / 2) - 10;
+        }
+        // Keep within left edge
+        if (tooltipX - (tooltipWidth / 2) < 10) {
+          tooltipX = (tooltipWidth / 2) + 10;
+        }
+
+        tooltipEl.style.left = `${tooltipX}px`;
+        tooltipEl.style.top = `${nekoPosY - 40}px`;
+      }
+    }, 16);
     nekoEl.style.imageRendering = "pixelated";
     nekoEl.style.left = `${nekoPosX - 16}px`;
     nekoEl.style.top = `${nekoPosY - 16}px`;
@@ -143,8 +202,9 @@
   function idle() {
     idleTime += 1;
 
-    // every ~ 20 seconds
-    if (
+    if (isTrapped) {
+      idleAnimation = "sleeping";
+    } else if (
       idleTime > 10 &&
       Math.floor(Math.random() * 200) === 0 &&
       idleAnimation == null
@@ -198,8 +258,12 @@
 
   function frame() {
     frameCount += 1;
-    const diffX = nekoPosX - mousePosX;
-    const diffY = nekoPosY - mousePosY;
+    
+    const targetX = isTrapped ? window.innerWidth - 48 : mousePosX;
+    const targetY = isTrapped ? window.innerHeight - 48 : mousePosY;
+    
+    const diffX = nekoPosX - targetX;
+    const diffY = nekoPosY - targetY;
     const distance = Math.sqrt(diffX ** 2 + diffY ** 2);
 
     if (distance < nekoSpeed || distance < 48) {

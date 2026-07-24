@@ -331,7 +331,7 @@
 
 /* biome-ignore lint/correctness/noUnknownTypeSelector: Standard API */
 ::view-transition-group(root) {
-  animation-duration: 2s;
+  animation-duration: 1s;
   z-index: 99999;
 }
 
@@ -340,7 +340,7 @@
   mask: var(--transition-gif, url("/reze-dance.gif")) center / 0 no-repeat;
   -webkit-mask:
     var(--transition-gif, url("/reze-dance.gif")) center / 0 no-repeat;
-  animation: scale-mask 2s cubic-bezier(0.87, 0, 0.13, 1) forwards;
+  animation: scale-mask 1s ease-in-out forwards;
 }
 
 /* biome-ignore lint/correctness/noUnknownTypeSelector: Standard API */
@@ -356,7 +356,7 @@
 /* biome-ignore lint/correctness/noUnknownTypeSelector: Standard API */
 ::view-transition-group(root) {
   z-index: 10;
-  animation-duration: 2s;
+  animation-duration: 1s;
 }
 
 /* Hide the oneko cat during the transition to prevent glitching */
