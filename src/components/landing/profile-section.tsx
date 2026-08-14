@@ -13,6 +13,7 @@ import {
   TooltipTrigger,
 } from "../ui/tooltip";
 import Banner from "./banner";
+import { LinkedInBadge } from "./linkedin-badge";
 
 const socialLinks = [
   {
@@ -225,6 +226,10 @@ const ProfileHeader = () => {
           obsession over design details.
         </span>
       </p>
+      
+      <div className="px-4 sm:px-8 pt-2 pb-4">
+        <LinkedInBadge />
+      </div>
     </Container>
   );
 };
