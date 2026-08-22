@@ -42,7 +42,7 @@ const Card = ({ project }: { project: ProjectItem }) => {
           )}
         />
 
-        {isHovered && (
+        {isHovered && project.videoUrl && (
           <video
             muted
             autoPlay
@@ -132,7 +132,7 @@ const ProjectCard = ({ projects }: { projects: ProjectItem[] }) => {
 
       {projects.length > 4 && (
         <GradientButton
-          onClick={() => router.push("/work")}
+          onClick={() => router.push("/projects")}
           className="px-4 flex items-center gap-x-2 py-2 text-sm"
         >
           View All <ChevronRight className="size-4" />

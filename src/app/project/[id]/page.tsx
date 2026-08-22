@@ -31,7 +31,7 @@ type ProjectDetail = {
   extendedDescription: string;
   tags: string[];
   image: string;
-  videoUrl: string;
+  videoUrl?: string;
   githubUrl: string;
   liveUrl: string;
   tweetUrl: null;
@@ -133,7 +133,7 @@ export default function ProjectPage() {
               className={`object-cover transition-opacity duration-700 ${videoReady ? "opacity-0" : "opacity-100"}`}
             />
 
-            {!videoReady && (
+            {!videoReady && project.videoUrl && (
               <div className="absolute inset-0 z-10 pointer-events-none">
                 <div className="absolute bottom-3 right-3 flex items-center gap-1.5 bg-background/60 backdrop-blur-sm border border-muted rounded-full px-3 py-1.5">
                   <span className="relative flex h-2 w-2">
@@ -147,19 +147,21 @@ export default function ProjectPage() {
               </div>
             )}
 
-            <video
-              ref={videoRef}
-              controls={false}
-              muted
-              autoPlay
-              loop
-              playsInline
-              preload="auto"
-              onCanPlay={() => setVideoReady(true)}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${videoReady ? "opacity-100" : "opacity-0"}`}
-            >
-              <source src={project.videoUrl} />
-            </video>
+            {project.videoUrl && (
+              <video
+                ref={videoRef}
+                controls={false}
+                muted
+                autoPlay
+                loop
+                playsInline
+                preload="auto"
+                onCanPlay={() => setVideoReady(true)}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${videoReady ? "opacity-100" : "opacity-0"}`}
+              >
+                <source src={project.videoUrl} />
+              </video>
+            )}
           </div>
 
           {/* Description */}

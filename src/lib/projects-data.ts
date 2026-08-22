@@ -7,10 +7,27 @@ export type ProjectItem = {
   techStack?: string[];
   githubUrl?: string;
   tags?: string[];
-  videoUrl: string;
+  videoUrl?: string;
 };
 
 export const projects: ProjectItem[] = [
+  {
+    id: "life-rpg",
+    name: "Life RPG",
+    url: "https://liferpg.priyanshuu.tech/",
+    description:
+      "Life RPG is an RPG-inspired productivity platform that turns real-life goals into a gamified adventure. Users create their own character, choose a life path, and earn XP by completing daily tasks and milestones. The app features a character creation flow, skill trees, quest tracking, and a persistent local progression system powered by Dexie (IndexedDB) — so progress is saved offline in the browser without any backend. Built with Next.js App Router and styled using Tailwind CSS, it blends game design thinking with habit-building mechanics to keep users engaged and motivated day after day.",
+    image: "/projects/liferpg.png",
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Dexie (IndexedDB)",
+      "Lucide React",
+    ],
+    githubUrl: "https://github.com/Priyanshudotdev/Life-RPG",
+    tags: ["Web", "Productivity", "Gamification", "PWA"],
+  },
   {
     id: "engineering-india-ycce",
     name: "Engineering India YCCE",
@@ -35,25 +52,6 @@ export const projects: ProjectItem[] = [
     tags: ["Web", "Event Management", "Full Stack"],
     videoUrl:
       "https://res.cloudinary.com/priyanshukayarkar/video/upload/q_auto/f_auto/v1775380220/1_zcplwf.mp4",
-  },
-  {
-    id: "rolex-studio",
-    name: "Rolex Studio",
-    url: "https://www.rolexstudio.works/",
-    description:
-      "Rolex Studio is a professional social media marketing agency website built to attract and convert business clients. It showcases a full suite of digital marketing services including social media management, content creation and strategy, analytics and growth planning, and paid advertising across platforms like Facebook, Instagram, and LinkedIn. The site features a compelling launch offer section, a services breakdown, and a streamlined contact funnel — all wrapped in a clean, minimal aesthetic optimized for conversion. Built with Next.js and Supabase for backend data handling, and styled with Tailwind CSS and shadcn/ui components for a polished, accessible UI.",
-    image: "/projects/rolexstudio.png",
-    techStack: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "shadcn/ui",
-      "Supabase",
-    ],
-    githubUrl: "https://github.com/Priyanshudotdev/rolexstudio",
-    tags: ["Web", "Marketing", "Agency", "Minimal"],
-    videoUrl:
-      "https://res.cloudinary.com/priyanshukayarkar/video/upload/q_auto/f_auto/v1775380200/4_ta6ini.mp4",
   },
   {
     id: "maadhyam",
@@ -81,6 +79,25 @@ export const projects: ProjectItem[] = [
     tags: ["Web", "Interior Design", "Creative", "Animation"],
     videoUrl:
       "https://res.cloudinary.com/priyanshukayarkar/video/upload/q_auto/f_auto/v1775380220/2_ztyqon.mp4",
+  },
+  {
+    id: "rolex-studio",
+    name: "Rolex Studio",
+    url: "https://www.rolexstudio.works/",
+    description:
+      "Rolex Studio is a professional social media marketing agency website built to attract and convert business clients. It showcases a full suite of digital marketing services including social media management, content creation and strategy, analytics and growth planning, and paid advertising across platforms like Facebook, Instagram, and LinkedIn. The site features a compelling launch offer section, a services breakdown, and a streamlined contact funnel — all wrapped in a clean, minimal aesthetic optimized for conversion. Built with Next.js and Supabase for backend data handling, and styled with Tailwind CSS and shadcn/ui components for a polished, accessible UI.",
+    image: "/projects/rolexstudio.png",
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Supabase",
+    ],
+    githubUrl: "https://github.com/Priyanshudotdev/rolexstudio",
+    tags: ["Web", "Marketing", "Agency", "Minimal"],
+    videoUrl:
+      "https://res.cloudinary.com/priyanshukayarkar/video/upload/q_auto/f_auto/v1775380200/4_ta6ini.mp4",
   },
 ];
 
