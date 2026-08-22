@@ -564,7 +564,7 @@ const GitHubActivity = ({
 
   const parsedYear = Number(contributions.at(-1)?.date.slice(0, 4));
   const displayYear = year ?? (Number.isFinite(parsedYear) ? parsedYear : null);
-  const heading = \`\${total} contributions\${displayYear ? \` in \${displayYear}\` : ""}\`;
+  const heading = `${total} contributions${displayYear ? ` in ${displayYear}` : ""}`;
 
   const gap = gapFor(cellSize);
   const columns = Math.min(
@@ -604,7 +604,7 @@ const GitHubActivity = ({
       {repos.length > 0 && (
         <motion.div
           layout
-          id={\`\${uid}-panel\`}
+          id={`${uid}-panel`}
           data-slot="github-activity-panel"
           data-state={open ? "open" : "closed"}
           className={cn(
@@ -628,7 +628,7 @@ const GitHubActivity = ({
                     <Avatar
                       key={index}
                       repo={repo}
-                      layoutId={\`\${uid}-\${index}\`}
+                      layoutId={`${uid}-${index}`}
                       transition={transition}
                       className="-ml-2 first:ml-0"
                     />
@@ -640,7 +640,7 @@ const GitHubActivity = ({
                 type="button"
                 onClick={toggle}
                 aria-expanded={open}
-                aria-controls={\`\${uid}-panel\`}
+                aria-controls={`${uid}-panel`}
                 aria-label={
                   open ? "Hide top repositories" : "Show top repositories"
                 }
@@ -664,7 +664,7 @@ const GitHubActivity = ({
                   <li key={index}>
                     <RepoRow
                       repo={repo}
-                      layoutId={\`\${uid}-\${index}\`}
+                      layoutId={`${uid}-${index}`}
                       transition={transition}
                     />
                   </li>

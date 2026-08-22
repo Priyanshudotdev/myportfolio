@@ -23,7 +23,7 @@ const GithubContributionCard = () => {
   }
 
   return (
-    <Container className="px-8 py-4">
+    <Container className="px-4 sm:px-8 py-4">
       <a
         href={`https://github.com/${username}`}
         target="_blank"
@@ -32,10 +32,11 @@ const GithubContributionCard = () => {
       >
         <Heading text={`GitHub Contributions ● @${username}`} />
       </a>
-      <div className="py-8 flex flex-col items-center gap-4">
+      <div className="py-6 flex flex-col items-center w-full overflow-x-auto">
         <GitHubActivity 
           username={username} 
-          className="w-full max-w-fit mx-auto border border-black/10 dark:border-white/10" 
+          cellSize={10}
+          className="w-full max-w-full mx-auto border border-black/10 dark:border-white/10" 
         />
       </div>
     </Container>
